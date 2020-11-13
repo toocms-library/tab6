@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--App主色调-->
+    <color name="clr_main">#1B88EE</color>
+
+    <!-- topbar标题文字颜色 -->
+    <color name="app_topbar_bg">?attr/app_primary_color</color>
+    <!-- topbar标题文字颜色 -->
+    <color name="app_topbar_title_color">@android:color/white</color>
+    <!-- APP副标题文字颜色 -->
+    <color name="app_topbar_subtitle_color">@android:color/white</color>
+
+    <color name="xupdate_default_theme_color">?attr/app_primary_color</color>
+
+    <color name="divider">#E3E3E3</color>
+</resources>

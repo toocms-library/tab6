@@ -1,0 +1,92 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion rootProject.ext.androidVersion.compileSdkVersion
+    buildToolsVersion rootProject.ext.androidVersion.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.androidVersion.minSdkVersion
+        targetSdkVersion rootProject.ext.androidVersion.targetSdkVersion
+        versionCode rootProject.ext.versionCode
+        versionName rootProject.ext.versionName
+
+        multiDexEnabled true
+        vectorDrawables.useSupportLibrary true
+        dataBinding { enabled = true }
+
+        consumerProguardFiles "consumer-rules.pro"
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [
+                        //必须，告知RxHttp你依赖的okhttp版本，目前已适配 v3.12.0 - v4.8.1版本
+                        rxhttp_okhttp : rootProject.ext.okhttp,
+                        //使用asXxx方法时必须，告知RxHttp你依赖的rxjava版本，可传入rxjava2、rxjava3
+                        rxhttp_rxjava : 'rxjava3',
+                        rxhttp_package: 'com.toocms.tab.network'   //非必须，指定RxHttp相关类的生成路径，即包名
+                ]
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        encoding "UTF-8"
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+}
+
+dependencies {
+
+    api googleDependencies["multidex"]
+    api googleDependencies["appcompat"]
+
+    api eventDependencies["rxandroid"]
+    api eventDependencies["rxjava"]
+    api eventDependencies["rxlife"]
+    api eventDependencies["rxlifecycle"]
+    api eventDependencies["rxlifecycle-components"]
+    api eventDependencies["rxbinding"]
+
+    api networkDependencies["rxhttp"]
+    api networkDependencies["okhttp"]
+
+    api viewDependencies["qmui"]
+    api viewDependencies["arch"]
+    api viewDependencies["autosize"]
+
+    api recycelDependencies["smart"]
+    api recycelDependencies["smart-material"]
+    api recycelDependencies["smart-ball"]
+
+    api imageDependencies["glide"]
+    api imageDependencies["glide-integration"]
+    api imageDependencies["pictureselector"]
+
+    api utilsDependencies["utilcodex"]
+    api utilsDependencies["gson"]
+
+    api thirdDependencies["umeng-common"]
+    api thirdDependencies["umeng-utdid"]
+    api thirdDependencies["umeng-asms"]
+    api thirdDependencies["umeng-crash"]
+    api thirdDependencies["umeng-oaid-lenovo"]
+    api thirdDependencies["umeng-oaid-mi"]
+    api thirdDependencies["umeng-oaid-oppo"]
+    api thirdDependencies["umeng-oaid-vivo"]
+
+    annotationProcessor compilerDependencies["glide-compiler"]
+    annotationProcessor compilerDependencies["arch-compiler"]
+    annotationProcessor compilerDependencies["rxhttp-compiler"]
+}

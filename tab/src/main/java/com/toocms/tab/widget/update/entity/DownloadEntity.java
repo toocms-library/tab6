@@ -1,0 +1,142 @@
+package com.toocms.tab.widget.update.entity;
+
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import com.toocms.tab.widget.update._XUpdate;
+
+import java.io.File;
+
+/**
+ * 下载信息实体
+ *
+ * @author xuexiang
+ * @since 2018/7/9 上午11:41
+ */
+public class DownloadEntity implements Parcelable {
+    /**
+     * 下载地址
+     */
+    private String mDownloadUrl;
+    /**
+     * 文件下载的目录
+     */
+    private String mCacheDir;
+    /**
+     * 下载文件的加密值，用于校验，防止下载的apk文件被替换【当然你也可以不使用MD5加密】
+     */
+    private String mMd5;
+    /**
+     * 下载文件的大小【单位：KB】
+     */
+    private long mSize;
+    //==========================//
+    /**
+     * 是否在通知栏上显示下载进度
+     */
+    private boolean mIsShowNotification;
+
+    public DownloadEntity() {
+
+    }
+
+    protected DownloadEntity(Parcel in) {
+        mDownloadUrl = in.readString();
+        mCacheDir = in.readString();
+        mMd5 = in.readString();
+        mSize = in.readLong();
+        mIsShowNotification = in.readByte() != 0;
+    }
+
+    public static final Creator<DownloadEntity> CREATOR = new Creator<DownloadEntity>() {
+        @Override
+        public DownloadEntity createFromParcel(Parcel in) {
+            return new DownloadEntity(in);
+        }
+
+        @Override
+        public DownloadEntity[] newArray(int size) {
+            return new DownloadEntity[size];
+        }
+    };
+
+    public String getDownloadUrl() {
+        return mDownloadUrl;
+    }
+
+    public DownloadEntity setDownloadUrl(String downloadUrl) {
+        mDownloadUrl = downloadUrl;
+        return this;
+    }
+
+    public String getCacheDir() {
+        return mCacheDir;
+    }
+
+    public DownloadEntity setCacheDir(String cacheDir) {
+        mCacheDir = cacheDir;
+        return this;
+    }
+
+    public String getMd5() {
+        return mMd5;
+    }
+
+    public DownloadEntity setMd5(String md5) {
+        mMd5 = md5;
+        return this;
+    }
+
+    public long getSize() {
+        return mSize;
+    }
+
+    public DownloadEntity setSize(long size) {
+        mSize = size;
+        return this;
+    }
+
+    public boolean isShowNotification() {
+        return mIsShowNotification;
+    }
+
+    public DownloadEntity setShowNotification(boolean showNotification) {
+        mIsShowNotification = showNotification;
+        return this;
+    }
+
+    /**
+     * 验证文件是否有效【没设置mMd5默认不校验，直接有效】
+     *
+     * @param apkFile 需要校验的文件
+     * @return 文件是否有效
+     */
+    public boolean isApkFileValid(File apkFile) {
+        return _XUpdate.isFileValid(mMd5, apkFile);
+    }
+
+    @Override
+    public String toString() {
+        return "DownloadEntity{" +
+                "mDownloadUrl='" + mDownloadUrl + '\'' +
+                ", mCacheDir='" + mCacheDir + '\'' +
+                ", mMd5='" + mMd5 + '\'' +
+                ", mSize=" + mSize +
+                ", mIsShowNotification=" + mIsShowNotification +
+                '}';
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(mDownloadUrl);
+        dest.writeString(mCacheDir);
+        dest.writeString(mMd5);
+        dest.writeLong(mSize);
+        dest.writeByte((byte) (mIsShowNotification ? 1 : 0));
+    }
+}

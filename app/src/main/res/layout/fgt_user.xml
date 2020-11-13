@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="userViewModel"
+            type="com.toocms.sample.ui.tool.user.UserViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ScrollView
+            android:id="@+id/http_scroll"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:padding="20dp"
+            android:scrollbars="none"
+            app:layout_constraintHeight_percent="0.5"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/http_textview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{userViewModel.showText}" />
+        </ScrollView>
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:padding="10dp"
+            android:stretchColumns="*"
+            app:layout_constraintHeight_percent="0.5"
+            app:layout_constraintTop_toBottomOf="@id/http_scroll">
+
+            <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+                onClickCommand="@{userViewModel.login}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:text="登录" />
+
+            <TableRow>
+
+                <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+                    onClickCommand="@{userViewModel.getUserInfo}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="获取用户信息" />
+
+                <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+                    onClickCommand="@{userViewModel.getUserId}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:text=" 获取用户ID " />
+
+                <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+                    onClickCommand="@{userViewModel.setUserNickname}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:text="更改用户昵称" />
+            </TableRow>
+
+            <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+                onClickCommand="@{userViewModel.logout}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="注销" />
+
+            <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+                onClickCommand="@{userViewModel.checkStatus}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="检测登录状态" />
+        </TableLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="topbar_title_size">18sp</dimen>
+    <dimen name="topbar_height_size">48dp</dimen>
+
+    <dimen name="crash_horizontal_margin">40dp</dimen>
+    <dimen name="crash_vertical_margin">20dp</dimen>
+    <dimen name="crash_vertical_margin2">40dp</dimen>
+</resources>

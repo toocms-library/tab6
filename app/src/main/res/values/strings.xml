@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Sample</string>
+
+    <string name="picture"> 张图片被选择</string>
+</resources>

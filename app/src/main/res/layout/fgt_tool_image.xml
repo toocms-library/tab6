@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="imageViewModel"
+            type="com.toocms.sample.ui.tool.image.ImageViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/image_center"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.4" />
+
+        <ImageView
+            android:id="@+id/image_left_top"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            app:layout_constraintBottom_toTopOf="@id/image_center"
+            app:layout_constraintRight_toLeftOf="@id/image_center" />
+
+        <ImageView
+            android:id="@+id/image_left_right"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            app:layout_constraintBottom_toTopOf="@id/image_center"
+            app:layout_constraintLeft_toRightOf="@id/image_center" />
+
+        <ImageView
+            android:id="@+id/image_left_bottom"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            app:layout_constraintRight_toLeftOf="@id/image_center"
+            app:layout_constraintTop_toBottomOf="@id/image_center" />
+
+        <ImageView
+            android:id="@+id/image_right_bottom"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            app:layout_constraintLeft_toRightOf="@id/image_center"
+            app:layout_constraintTop_toBottomOf="@id/image_center" />
+
+        <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+            android:id="@+id/clear_memory"
+            onClickCommand="@{imageViewModel.clearMemory}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="60dp"
+            android:text="清除运存缓存"
+            app:layout_constraintTop_toBottomOf="@id/image_left_bottom" />
+
+        <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+            onClickCommand="@{imageViewModel.clearCache}"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="清除内存缓存"
+            app:layout_constraintEnd_toEndOf="@id/clear_memory"
+            app:layout_constraintStart_toStartOf="@id/clear_memory"
+            app:layout_constraintTop_toBottomOf="@id/clear_memory" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

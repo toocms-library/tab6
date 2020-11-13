@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="httpViewModel"
+            type="com.toocms.sample.ui.tool.http.HttpViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ScrollView
+            android:id="@+id/http_scroll"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:padding="20dp"
+            android:scrollbars="none"
+            app:layout_constraintHeight_percent="0.5"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/http_textview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </ScrollView>
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:padding="10dp"
+            android:stretchColumns="*"
+            app:layout_constraintHeight_percent="0.5"
+            app:layout_constraintTop_toBottomOf="@id/http_scroll">
+
+            <TableRow>
+
+                <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+                    onClickCommand="@{httpViewModel.getObjectOnMain}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Get请求对象(主线程)" />
+
+                <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+                    onClickCommand="@{httpViewModel.getListOnMain}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:text="Get请求列表(主线程)" />
+            </TableRow>
+
+            <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+                onClickCommand="@{httpViewModel.postOnMain}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Post请求(主线程)" />
+
+            <TableRow android:layout_marginTop="20dp">
+
+                <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+                    onClickCommand="@{httpViewModel.getNonMain}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Get请求(非主线程)" />
+
+                <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+                    onClickCommand="@{httpViewModel.postNonMain}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:text="Post请求(非主线程)" />
+            </TableRow>
+
+            <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+                onClickCommand="@{httpViewModel.autoDispose}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="页面销毁自动关闭&amp;自动显示/隐藏加载条" />
+
+            <TableRow android:layout_marginTop="20dp">
+
+                <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+                    onClickCommand="@{httpViewModel.upload}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="上传" />
+
+                <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+                    onClickCommand="@{httpViewModel.download}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:text="下载" />
+            </TableRow>
+        </TableLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

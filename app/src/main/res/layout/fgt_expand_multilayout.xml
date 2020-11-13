@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="multiLayoutViewModel"
+            type="com.toocms.sample.ui.expand.multi.MultiLayoutViewModel" />
+
+        <import type="com.toocms.tab.binding.viewadapter.recyclerview.LayoutManagers" />
+
+        <import type="com.toocms.tab.binding.viewadapter.recyclerview.LineManagers" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.scwang.smart.refresh.layout.SmartRefreshLayout
+            android:id="@+id/smart_refresh"
+            onLoadMoreCommand="@{multiLayoutViewModel.onLoadMoreCommand}"
+            onRefreshCommand="@{multiLayoutViewModel.onRefreshCommand}"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/multi_layout"
+                itemBinding="@{multiLayoutViewModel.itemBinding}"
+                items="@{multiLayoutViewModel.list}"
+                layoutManagerFactory="@{LayoutManagers.grid(2)}"
+                lineManagerFactory="@{LineManagers.both()}"
+                spanSizeLookup="@{multiLayoutViewModel.spanSizeLookup}"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </com.scwang.smart.refresh.layout.SmartRefreshLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

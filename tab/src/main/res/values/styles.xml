@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="XUpdate_ProgressBar_Red">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="xnpb_max">100</item>
+        <item name="xnpb_current">0</item>
+        <item name="xnpb_unreached_color">#CCCCCC</item>
+        <item name="xnpb_reached_color">#e94339</item>
+        <item name="xnpb_text_size">12sp</item>
+        <item name="xnpb_text_color">#e94339</item>
+        <item name="xnpb_reached_bar_height">4dp</item>
+        <item name="xnpb_unreached_bar_height">3dp</item>
+    </style>
+
+    <style name="XUpdate_Fragment_Dialog" parent="android:style/Theme.Dialog">
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowCloseOnTouchOutside">false</item>
+        <item name="android:windowEnterAnimation">@anim/xupdate_app_window_in</item>
+        <item name="android:windowExitAnimation">@anim/xupdate_app_window_out</item>
+    </style>
+
+    <!-- BaseDialog -->
+    <style name="XUpdate_Dialog" parent="@android:style/Theme.Dialog">
+        <!-- Dialog的windowFrame框为无 -->
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <!-- 是否漂现在activity上 -->
+        <item name="android:windowIsFloating">true</item>
+        <!-- 是否半透明 -->
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowAnimationStyle">@null</item>
+        <item name="android:windowSoftInputMode">adjustPan</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowEnterAnimation">@anim/xupdate_app_window_in</item>
+        <item name="android:windowExitAnimation">@anim/xupdate_app_window_out</item>
+    </style>
+
+    <!--DialogTheme，用于将Activity作为Dialog的主题-->
+    <style name="XUpdate_DialogTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!--设置dialog的背景，此处为系统给定的透明值-->
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <!--Dialog的windowFrame框为无-->
+        <item name="android:windowFrame">@null</item>
+        <!--无标题-->
+        <item name="android:windowNoTitle">true</item>　　　　　
+        <!--是否浮现在activity之上-->
+        <item name="android:windowIsFloating">true</item>
+        <!--是否半透明-->
+        <item name="android:windowIsTranslucent">true</item>
+        <!--是否有覆盖-->
+        <item name="android:windowContentOverlay">@null</item>
+        <!--设置Activity出现方式-->
+        <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
+        <item name="android:windowEnterAnimation">@anim/xupdate_app_window_in</item>
+        <item name="android:windowExitAnimation">@anim/xupdate_app_window_out</item>
+        <!--背景是否模糊显示-->
+        <item name="android:backgroundDimEnabled">true</item>
+    </style>
+
+    <!-- 密码输入法 -->
+    <!--底部弹框-->
+    <style name="BottomDialog" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:backgroundDimEnabled">true</item>
+    </style>
+
+    <style name="AnimBottom" parent="@android:style/Animation">
+        <item name="android:windowEnterAnimation">@anim/push_bottom_in</item>
+        <item name="android:windowExitAnimation">@anim/push_bottom_out</item>
+    </style>
+    <!-- 黑色正常大小的文字 -->
+    <style name="style_black_normal_text">
+        <item name="android:textColor">#212121</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:paddingRight">4dp</item>
+        <item name="android:includeFontPadding">false</item>
+    </style>
+
+    <style name="layout_input_amount_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">55dp</item>
+        <item name="android:layout_marginBottom">2px</item>
+        <item name="android:gravity">center</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+    <!--键盘数字-->
+    <style name="btn_input_num_style">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">25sp</item>
+        <item name="android:textColor">#212121</item>
+        <item name="android:background">@drawable/selector_item_pressed</item>
+    </style>
+
+    <style name="divider">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1px</item>
+        <item name="android:background">@color/divider</item>
+    </style>
+</resources>
