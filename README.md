@@ -2,9 +2,9 @@
   <img src="https://avatars3.githubusercontent.com/u/38806334?s=400&u=b20d7b719e126e45e3d45c0ff04d0597ae3ed703&v=4" width="220" height="220" alt="Banner" />
 </p>
 
-# Tab6框架集成文档
+# tab6框架集成文档
 
-[![](https://jitpack.io/v/toocms-library/Tab6.svg)](https://jitpack.io/#toocms-library/Tab6)&#160;&#160;&#160;&#160;&#160;![Support](https://img.shields.io/badge/API-19+-4BC51D.svg)&#160;&#160;&#160;&#160;&#160;![Author](https://img.shields.io/badge/Author-Zero-4BC51D.svg)
+[![](https://jitpack.io/v/toocms-library/tab6.svg)](https://jitpack.io/#toocms-library/tab6)&#160;&#160;&#160;&#160;&#160;![Support](https://img.shields.io/badge/API-19+-4BC51D.svg)&#160;&#160;&#160;&#160;&#160;![Author](https://img.shields.io/badge/Author-Zero-4BC51D.svg)
 
 ## 添加Gradle依赖
 - 在项目根目录的build.gradle文件中添加
@@ -19,8 +19,8 @@ allprojects {
 - 在模块目录下的build.gradle文件的dependencies添加
 ```
 dependencies {
-    implementation 'com.github.toocms-library.Tab6:tab:6.0.0-alpha1' // 核心必须依赖
-    implementation 'com.github.toocms-library.Tab6:tab-expand:6.0.0-alpha1' // 扩展包
+    implementation 'com.github.toocms-library.tab6:tab:6.0.0-alpha' // 核心必须依赖
+    implementation 'com.github.toocms-library.tab6:tab-expand:6.0.0-alpha' // 扩展包
 }
 ```
 ## 集成方法
