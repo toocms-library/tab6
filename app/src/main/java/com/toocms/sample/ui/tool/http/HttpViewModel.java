@@ -50,17 +50,13 @@ public class HttpViewModel extends BaseViewModel<BaseModel> {
             ApiTool.get("Index/index")
                     .asTooCMSResponse(Index.class)
                     .observeOn(AndroidSchedulers.mainThread())
-                    .request(index -> {
-                        uc.setText.setValue(index.toString());
-                    }));
+                    .request(index -> uc.setText.setValue(index.toString())));
 
     public BindingCommand getListOnMain = new BindingCommand(() ->
             ApiTool.get("http://api.qunyan.uuudoo.com/Member/getMemberList")
                     .asTooCMSResponseList(User.class)
                     .observeOn(AndroidSchedulers.mainThread())
-                    .request(users -> {
-                        uc.setText.setValue(users.toString());
-                    }));
+                    .request(users -> uc.setText.setValue(users.toString())));
 
     //  Post请求方式（回调在主线程执行）按钮点击命令
     public BindingCommand postOnMain = new BindingCommand(() -> {
@@ -69,18 +65,14 @@ public class HttpViewModel extends BaseViewModel<BaseModel> {
                 .add("adr_id", 5)
                 .asTooCMSResponse(String.class)
                 .observeOn(AndroidSchedulers.mainThread())
-                .request(s -> {
-                    uc.setText.setValue(s);
-                });
+                .request(s -> uc.setText.setValue(s));
     });
 
     //  Get请求方式（回调不在主线程执行）按钮点击命令
     public BindingCommand getNonMain = new BindingCommand(() ->
             ApiTool.get("http://api.qunyan.uuudoo.com/Member/getMemberList")
                     .asTooCMSResponseList(User.class)
-                    .request(users -> {
-                        ToastUtils.showShort(users.toString());
-                    }));
+                    .request(users -> ToastUtils.showShort(users.toString())));
 
     //  Post请求方式（回调不在主线程执行）按钮点击命令
     public BindingCommand postNonMain = new BindingCommand(() -> {
@@ -90,9 +82,7 @@ public class HttpViewModel extends BaseViewModel<BaseModel> {
         ApiTool.post("http://hotpotshop-api.uuudoo.com/Center/setDefault")
                 .params(params)
                 .asTooCMSResponse(String.class)
-                .request(s -> {
-                    ToastUtils.showShort(s);
-                });
+                .request(s -> ToastUtils.showShort(s));
     });
 
     //  Get请求方式（页面销毁自动关闭&自动显示/隐藏加载条）按钮点击命令
@@ -100,9 +90,7 @@ public class HttpViewModel extends BaseViewModel<BaseModel> {
             ApiTool.get("http://api.qunyan.uuudoo.com/Member/getMemberList")
                     .asTooCMSResponseList(User.class)
                     .withViewModel(this)
-                    .request(users -> {
-                        uc.setText.setValue(users.toString());
-                    }));
+                    .request(users -> uc.setText.setValue(users.toString())));
 
     //  上传
     public BindingCommand upload = new BindingCommand(() ->
@@ -114,13 +102,9 @@ public class HttpViewModel extends BaseViewModel<BaseModel> {
                     param.putFile("head", Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q ? result.get(0).getAndroidQToPath() : result.get(0).getCutPath());
                     ApiTool.post("http://xlg-api.uuudoo.com/System/upload")
                             .params(param)
-                            .asUpload(progress -> {
-                                uc.setText.setValue(progress.getProgress() + "%");
-                            })
+                            .asUpload(progress -> uc.setText.setValue(progress.getProgress() + "%"))
                             .asTooCMSResponse(ImageUrl.class)
-                            .request(imageUrl -> {
-                                uc.setText.setValue(imageUrl.toString());
-                            });
+                            .request(imageUrl -> uc.setText.setValue(imageUrl.toString()));
                 }
 
                 @Override
@@ -133,12 +117,8 @@ public class HttpViewModel extends BaseViewModel<BaseModel> {
     public BindingCommand download = new BindingCommand(() ->
             ApiTool.get("http://update.9158.com/miaolive/Miaolive.apk")
                     .asDownload(FileManager.getDownloadPath() + File.separator + System.currentTimeMillis() + ".apk",
-                            progress -> {
-                                uc.setText.setValue(progress.getProgress() + "%");
-                            })
-                    .request(fileName -> {
-                        uc.setText.setValue(fileName);
-                    }));
+                            progress -> uc.setText.setValue(progress.getProgress() + "%"))
+                    .request(fileName -> uc.setText.setValue(fileName)));
 
     public class UIChangeObservable {
         public SingleLiveEvent<String> setText = new SingleLiveEvent<>();
