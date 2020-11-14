@@ -2,7 +2,7 @@
   <img src="https://avatars3.githubusercontent.com/u/38806334?s=400&u=b20d7b719e126e45e3d45c0ff04d0597ae3ed703&v=4" width="220" height="220" alt="Banner" />
 </p>
 
-# tab6框架集成文档
+# tab6集成文档
 
 [![](https://jitpack.io/v/toocms-library/tab6.svg)](https://jitpack.io/#toocms-library/tab6)&#160;&#160;&#160;&#160;&#160;![Support](https://img.shields.io/badge/API-19+-4BC51D.svg)&#160;&#160;&#160;&#160;&#160;![Author](https://img.shields.io/badge/Author-Zero-4BC51D.svg)
 
