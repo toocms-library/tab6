@@ -23,11 +23,6 @@ public class UserViewModel extends BaseViewModel<UserRepository> {
         super(application, model);
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-    }
-
     private void loadUserInfo() {
         ApiTool.post("http://xlg-api.uuudoo.com/Center/getInfo")
                 .add("m_id", 6)

@@ -28,6 +28,6 @@ public class MD5Fgt extends BaseFgt<FgtToolMd5Binding, MD5ViewModel> {
 
     @Override
     protected void viewObserver() {
-        viewModel.getUc().setText.observe(this, s -> binding.tvMd5.setText(s));
+        viewModel.setText.observe(this, s -> binding.tvMd5.setText(s));
     }
 }

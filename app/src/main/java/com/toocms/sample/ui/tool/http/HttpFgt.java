@@ -28,8 +28,6 @@ public class HttpFgt extends BaseFgt<FgtToolHttpBinding, HttpViewModel> {
 
     @Override
     protected void viewObserver() {
-        viewModel.getUc().setText.observe(this, s -> {
-            binding.httpTextview.setText(s);
-        });
+        viewModel.getUc().setText.observe(this, s -> binding.httpTextview.setText(s));
     }
 }

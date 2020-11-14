@@ -4,6 +4,8 @@
 
     <data>
 
+        <import type="com.toocms.sample.R" />
+
         <variable
             name="imageViewModel"
             type="com.toocms.sample.ui.tool.image.ImageViewModel" />
@@ -16,6 +18,8 @@
 
         <ImageView
             android:id="@+id/image_center"
+            placeholderRes="@{R.drawable.ic_launcher_background}"
+            url="@{imageViewModel.urlCenter}"
             android:layout_width="100dp"
             android:layout_height="100dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -26,13 +30,15 @@
 
         <ImageView
             android:id="@+id/image_left_top"
+            url="@{imageViewModel.urlLeftTop}"
             android:layout_width="100dp"
             android:layout_height="100dp"
             app:layout_constraintBottom_toTopOf="@id/image_center"
             app:layout_constraintRight_toLeftOf="@id/image_center" />
 
         <ImageView
-            android:id="@+id/image_left_right"
+            android:id="@+id/image_right_top"
+            url="@{imageViewModel.urlRightTop}"
             android:layout_width="100dp"
             android:layout_height="100dp"
             app:layout_constraintBottom_toTopOf="@id/image_center"
@@ -40,6 +46,7 @@
 
         <ImageView
             android:id="@+id/image_left_bottom"
+            url="@{imageViewModel.urlLeftBottom}"
             android:layout_width="100dp"
             android:layout_height="100dp"
             app:layout_constraintRight_toLeftOf="@id/image_center"
@@ -47,6 +54,7 @@
 
         <ImageView
             android:id="@+id/image_right_bottom"
+            url="@{imageViewModel.urlRightBottom}"
             android:layout_width="100dp"
             android:layout_height="100dp"
             app:layout_constraintLeft_toRightOf="@id/image_center"

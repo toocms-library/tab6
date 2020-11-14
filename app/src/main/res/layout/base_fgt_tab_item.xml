@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
 
@@ -8,25 +7,16 @@
 
         <import type="com.toocms.tab.binding.viewadapter.recyclerview.LineManagers" />
 
-        <import type="com.toocms.sample.ui.base.TabViewModel" />
-
         <variable
             name="tabViewModel"
-            type="TabViewModel" />
+            type="com.toocms.sample.ui.base.TabViewModel" />
     </data>
 
-    <com.qmuiteam.qmui.widget.QMUIWindowInsetLayout2
+    <androidx.recyclerview.widget.RecyclerView
+        itemBinding="@{tabViewModel.itemBinding}"
+        items="@{tabViewModel.tabItems}"
+        layoutManagerFactory="@{LayoutManagers.grid(2)}"
+        lineManagerFactory="@{LineManagers.both()}"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <androidx.recyclerview.widget.RecyclerView
-            itemBinding="@{tabViewModel.itemBinding}"
-            items="@{tabViewModel.tabItems}"
-            layoutManagerFactory="@{LayoutManagers.grid(2)}"
-            lineManagerFactory="@{LineManagers.both()}"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_constraintTop_toBottomOf="@id/image" />
-    </com.qmuiteam.qmui.widget.QMUIWindowInsetLayout2>
+        android:layout_height="match_parent" />
 </layout>
