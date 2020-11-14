@@ -2,7 +2,7 @@
   <img src="https://avatars3.githubusercontent.com/u/38806334?s=400&u=b20d7b719e126e45e3d45c0ff04d0597ae3ed703&v=4" width="220" height="220" alt="Banner" />
 </p>
 
-# tab6集成文档
+# 集成文档
 
 [![](https://jitpack.io/v/toocms-library/tab6.svg)](https://jitpack.io/#toocms-library/tab6)&#160;&#160;&#160;&#160;&#160;![Support](https://img.shields.io/badge/API-19+-4BC51D.svg)&#160;&#160;&#160;&#160;&#160;![Author](https://img.shields.io/badge/Author-Zero-4BC51D.svg)
 
@@ -80,21 +80,21 @@ public class HttpFgt extends BaseFgt<FgtToolHttpBinding, HttpViewModel> {
 
     @Override
     protected void onFragmentCreated() {    // Fragment创建完毕回调
-        topBar.setTitle("网络请求");    // topBar为标题栏View
+        topBar.setTitle("网络请求"); // topBar为标题栏View
     }
 
     @Override
-    protected int getLayoutResId() {    // 指定布局文件
+    protected int getLayoutResId() { // 指定布局文件
         return R.layout.fgt_tool_http;
     }
 
     @Override
-    public int getVariableId() {    // 指定ViewModel的变量ID
+    public int getVariableId() { // 指定ViewModel的变量ID
         return BR.httpViewModel;
     }
 
     @Override
-    protected void viewObserver() {     // 观察者更新UI，通过观察ViewModel中定义的SingleLiveEvent变量的数据改变更新UI
+    protected void viewObserver() { // 观察者更新UI，通过观察ViewModel中定义的SingleLiveEvent变量的数据改变更新UI
         viewModel.getUc().setText.observe(this, s -> binding.httpTextview.setText(s));
     }
 }
@@ -301,4 +301,14 @@ ApiTool.get("http://update.9158.com/miaolive/Miaolive.apk")
    .request(fileName -> {
        // 返回下载的文件的绝对路径
    })
+```
+- 传参的另一种方式
+```java
+HttpParams params = new HttpParams();
+params.put("m_id", 7);
+params.put("adr_id", 5);
+ApiTool.post("http://hotpotshop-api.uuudoo.com/Center/setDefault")
+  .params(params)
+  .asTooCMSResponse(String.class)
+  .request(s -> ToastUtils.showShort(s));
 ```
