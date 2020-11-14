@@ -312,3 +312,4 @@ ApiTool.post("http://hotpotshop-api.uuudoo.com/Center/setDefault")
   .asTooCMSResponse(String.class)
   .request(s -> ToastUtils.showShort(s));
 ```
+- [更多用法](https://github.com/toocms-library/tab6/blob/master/app/src/main/java/com/toocms/sample/ui/tool/http/HttpViewModel.java)
