@@ -221,3 +221,84 @@ protected void viewObserver() {
             android:layout_height="100dp" />
 </layout>
 ```
+## ApiTool网络请求
+- 常用的写法
+```java
+ApiTool.get("Index/index") // url可与AppConfig类中的BaseUrl拼接使用，也可以指定完整的url
+   .add("m_id", 7)
+   .asTooCMSResponse(Index.class)
+   .withViewModel(this)
+   .request(index -> {
+      
+   });
+```
+- get方式请求
+```java
+ApiTool.get("Index/index") // get方式请求
+   .add("m_id", 7) // 添加参数
+   .asTooCMSResponse(Index.class) // 指定要返回的响应对象的类型（二选一，根据接口的返回数据决定）
+   .asTooCMSResponseList(User.class) // 指定要返回的响应列表的对象类型（二选一，根据接口的返回数据决定）
+   .observeOn(AndroidSchedulers.mainThread()) // 切换到主线程，如onStart和onFinally中代码不需要在主线程回调时可以不调用
+   .onStart(disposable -> {
+      // 当请求开始之前的回调，不需要可以不调用该方法
+   })
+   .onFinally(() -> {
+      // 当请求结束时的回调，不需要可以不调用该方法                
+   })
+   .withViewModel(this) // 绑定ViewModel，绑定后将自动绑定生命周期，Fragment销毁后请求自动取消
+   .showLoading(false) // 是否显示加载条，绑定了ViewModel后默认显示，可通过该项设置为不显示
+   .request(index -> {
+      // 调用请求方法，获取响应结果
+   }, (OnError) errorInfo -> {
+      if (errorInfo.isLogicException()) {
+        // 逻辑异常，即为flag为error的情况会回调该方法
+      }
+   });
+```
+- post方式请求，将get换成post即可
+```java
+ApiTool.post("Index/index") // post方式请求
+   .add("m_id", 7) // 添加参数
+   .asTooCMSResponse(Index.class) // 指定要返回的响应对象的类型（二选一，根据接口的返回数据决定）
+   .asTooCMSResponseList(User.class) // 指定要返回的响应列表的对象类型（二选一，根据接口的返回数据决定）
+   .observeOn(AndroidSchedulers.mainThread()) // 切换到主线程，如onStart和onFinally中代码不需要在主线程回调时可以不调用
+   .onStart(disposable -> {
+      // 当请求开始之前的回调，不需要可以不调用该方法
+   })
+   .onFinally(() -> {
+      // 当请求结束时的回调，不需要可以不调用该方法                
+   })
+   .withViewModel(this) // 绑定ViewModel，绑定后将自动绑定生命周期，Fragment销毁后请求自动取消
+   .showLoading(false) // 是否显示加载条，绑定了ViewModel后默认显示，可通过该项设置为不显示
+   .request(index -> {
+      // 调用请求方法，获取响应结果
+   }, (OnError) errorInfo -> {
+      if (errorInfo.isLogicException()) {
+        // 逻辑异常，即为flag为error的情况会回调该方法
+      }
+   });
+```
+- 上传，写法与post请求无异只是多了一个addFile和asUpload方法
+```java
+ApiTool.post("http://xlg-api.uuudoo.com/System/upload")
+   .add("folder", "1")
+   .addFile("head", result.get(0).getCutPath())
+   .asUpload(progress -> { // 上传进度
+       progress.getProgress(); // 进度值0-100
+   })
+   .asTooCMSResponse(ImageUrl.class)
+   .request(imageUrl -> {
+       
+   });
+```
+- 下载
+```java
+ApiTool.get("http://update.9158.com/miaolive/Miaolive.apk")
+   .asDownload(FileManager.getDownloadPath() + File.separator + System.currentTimeMillis() + ".apk", // 指定下载路径
+       progress -> { // 下载进度回调
+           progress.getProgress(); // 进度值0-100
+       })
+   .request(fileName -> {
+       // 返回下载的文件的绝对路径
+   })
+```
