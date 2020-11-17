@@ -4,7 +4,7 @@
 
 # 集成文档
 
-[![](https://jitpack.io/v/toocms-library/tab6.svg)](https://jitpack.io/#toocms-library/tab6)&#160;&#160;&#160;&#160;&#160;![Support](https://img.shields.io/badge/API-19+-4BC51D.svg)&#160;&#160;&#160;&#160;&#160;![Author](https://img.shields.io/badge/Author-Zero-4BC51D.svg)
+[![](https://jitpack.io/v/toocms-library/tab6.svg)](https://jitpack.io/#toocms-library/tab6)&#160;&#160;&#160;![Support](https://img.shields.io/badge/API-19+-4BC51D.svg)&#160;&#160;&#160;![Author](https://img.shields.io/badge/Author-Zero-4BC51D.svg)
 
 ## 添加Gradle依赖
 - 在项目根目录的build.gradle文件中添加
@@ -313,3 +313,28 @@ ApiTool.post("http://hotpotshop-api.uuudoo.com/Center/setDefault")
   .request(s -> ToastUtils.showShort(s));
 ```
 - [更多用法](https://github.com/toocms-library/tab6/blob/master/app/src/main/java/com/toocms/sample/ui/tool/http/HttpViewModel.java)
+## 异步加载图片
+- DataBinding方式（推荐）
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <import type="com.toocms.sample.R" />
+        <variable
+            name="imageViewModel"
+            type="com.toocms.sample.ui.tool.image.ImageViewModel" />
+    </data>
+    
+    <!-- url为加载图片的url，placeholderRes为占位图的id -->
+    <ImageView
+        android:id="@+id/image_center"
+        placeholderRes="@{R.drawable.ic_launcher_background}"
+        url="@{imageViewModel.urlCenter}"
+        android:layout_width="100dp"
+        android:layout_height="100dp" />
+</layout>
+```
+- 代码方式，[更多加载方式](https://github.com/toocms-library/tab6/blob/master/tab/src/main/java/com/toocms/tab/imageload/ImageLoader.java)
+```java
+ImageLoader.loadUrl2Image("url", imageview, R.drawable.ic_crash_image);
+```
