@@ -72,7 +72,7 @@ public class MainActivity extends BaseActivity {
 1. 创建类继承BaseModel，如需在页面退出时清除数据可重写onCleared回调方法
 2. 在该类中可借助SPUtils或数据库框架进行本地数据的存储
 3. 如若依赖了tab-expand可继承LoginStatusRepository类，该类实现了记录用户登录状态的逻辑
-4. 存储用户信息的Model可参考Demo中的UserRepository类
+4. 存储用户信息的Model可参考[UserRepository](https://github.com/toocms-library/tab6/blob/master/app/src/main/java/com/toocms/sample/data/UserRepository.java)类
 ### BaseFragment使用方法
 1. 创建Fragment类继承BaseFragment类，并实现其抽象方法
 ```java
@@ -117,7 +117,15 @@ public class HttpFgt extends BaseFgt<FgtToolHttpBinding, HttpViewModel> {
 ```
 3. BaseFragment类必须传入两个泛型参数，ViewDataBinding和BaseViewModel
 4. ViewDataBinding为布局文件自动生成的数据绑定类，[查看具体使用方法](https://www.jianshu.com/p/bd9016418af2)，传入后即可使用binding变量
-5. BaseViewModel则直接传入该类（简单页面）或其子类即可，传入后即可使用viewModel变量
+5. BaseViewModel可直接传入该类（简单页面，避免再创建一个空类）或其子类即可，传入后即可使用viewModel变量
+6. getViewModel回调，该方法是为Fragment指定ViewModel（当不重写该回调时，只能自动处理ViewModel构造函数只有一个Application的情况），一般用于在ViewModel的构造函数不仅仅只有Application时使用，工厂类参考[AppViewModelFactory](https://github.com/toocms-library/tab6/blob/master/app/src/main/java/com/toocms/sample/data/AppViewModelFactory.java)
+```java
+@Override
+protected UserViewModel getViewModel() {
+    AppViewModelFactory factory = AppViewModelFactory.getInstance(TooCMSApplication.getInstance());
+    return new ViewModelProvider(this, factory).get(UserViewModel.class);
+}
+```
 ### BaseViewModel使用方法
 - 创建类继承[BaseViewModel](https://github.com/toocms-library/tab6/blob/master/tab/src/main/java/com/toocms/tab/base/BaseViewModel.java)并注入Model类，如不需要Model类可注入BaseModel类或不注入即可
 ```java
