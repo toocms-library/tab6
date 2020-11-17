@@ -313,7 +313,7 @@ ApiTool.post("http://hotpotshop-api.uuudoo.com/Center/setDefault")
   .request(s -> ToastUtils.showShort(s));
 ```
 - [更多用法](https://github.com/toocms-library/tab6/blob/master/app/src/main/java/com/toocms/sample/ui/tool/http/HttpViewModel.java)
-## 异步加载图片
+## ImageLoader图片加载
 - DataBinding方式（推荐）
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
