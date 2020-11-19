@@ -223,13 +223,6 @@ public class BaseViewModel<M extends BaseModel> extends ScopeViewModel implement
         startFragment(clz, null, isDestroyCurrent);
     }
 
-    /**
-     * 启动Fragment
-     *
-     * @param clz
-     * @param bundle           参数
-     * @param isDestroyCurrent 是否关闭当前页面
-     */
     @Override
     public void startFragment(Class<? extends BaseFragment> clz, Bundle bundle, boolean... isDestroyCurrent) {
         Map<String, Object> params = new HashMap<>();
