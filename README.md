@@ -346,3 +346,4 @@ ApiTool.post("http://hotpotshop-api.uuudoo.com/Center/setDefault")
 ```java
 ImageLoader.loadUrl2Image("url", imageview, R.drawable.ic_crash_image);
 ```
+## [更多用法](https://github.com/toocms-library/tab6/wiki)
