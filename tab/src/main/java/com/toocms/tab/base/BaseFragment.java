@@ -277,16 +277,6 @@ public abstract class BaseFragment<V extends ViewDataBinding, VM extends BaseVie
         startSelectSignAty(PictureMimeType.ofAll(), 1, 1, 120, 120, listener);
     }
 
-    /**
-     * 启动单选页面
-     *
-     * @param chooseMode        扫描文件类型  {@link PictureMimeType#ofAll()}、{@link PictureMimeType#ofImage()}、{@link PictureMimeType#ofVideo()}
-     * @param aspect_ratio_x    裁剪比例X
-     * @param aspect_ratio_y    裁剪比例Y
-     * @param videoMaxSecond    显示多少秒以内的视频，不限制-0，>0即生效
-     * @param recordVideoSecond 视频录制秒数
-     * @param listener          获取数据回调
-     */
     @Override
     public void startSelectSignAty(int chooseMode, int aspect_ratio_x, int aspect_ratio_y, int videoMaxSecond, int recordVideoSecond, OnResultCallbackListener<LocalMedia> listener) {
         if (pictureStyle == null) {
@@ -329,16 +319,6 @@ public abstract class BaseFragment<V extends ViewDataBinding, VM extends BaseVie
         startSelectMultipleAty(PictureMimeType.ofAll(), selectionMedia, maxSelectNum, 120, 120, listener);
     }
 
-    /**
-     * 启动多选页面
-     *
-     * @param chooseMode        扫描文件类型  {@link PictureMimeType#ofAll()}、{@link PictureMimeType#ofImage()}、{@link PictureMimeType#ofVideo()}
-     * @param selectionMedia    已选数据
-     * @param maxSelectNum      最大选择数量
-     * @param videoMaxSecond    显示多少秒以内的视频，不限制-0，>0即生效
-     * @param recordVideoSecond 视频录制秒数
-     * @param listener          获取数据回调
-     */
     @Override
     public void startSelectMultipleAty(int chooseMode, List<LocalMedia> selectionMedia, int maxSelectNum, int videoMaxSecond, int recordVideoSecond, OnResultCallbackListener<LocalMedia> listener) {
         if (pictureStyle == null) {
