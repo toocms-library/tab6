@@ -1,9 +1,7 @@
 package com.toocms.sample.ui.expand.splash;
 
-import com.blankj.utilcode.util.ActivityUtils;
 import com.qmuiteam.qmui.util.QMUIStatusBarHelper;
 import com.toocms.sample.R;
-import com.toocms.sample.ui.expand.guide.GuideAty;
 import com.toocms.tab.expand.splash.BaseSplashActivity;
 
 /**
@@ -21,6 +19,7 @@ public class SplashAty extends BaseSplashActivity {
 
     @Override
     protected void onSplashFinished() {
+//        // 判断是否为首次打开
 //        if (isFirstOpen()) {
 //            setIsFirstOpen(false);
 //            ActivityUtils.startActivity(GuideAty.class);

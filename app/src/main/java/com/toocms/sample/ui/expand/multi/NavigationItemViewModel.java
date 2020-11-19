@@ -38,7 +38,5 @@ public class NavigationItemViewModel extends MultiItemViewModel<MultiLayoutViewM
         }
     }
 
-    public FlipNavigationView.OnItemClickListener listener = item -> {
-        viewModel.showToast(item.toString());
-    };
+    public FlipNavigationView.OnItemClickListener listener = item -> viewModel.showToast(item.toString());
 }

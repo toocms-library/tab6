@@ -7,9 +7,6 @@
         <variable
             name="bannerViewModel"
             type="com.toocms.sample.ui.widget.banner.BannerViewModel" />
-
-        <import type="com.toocms.sample.R" />
-
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
