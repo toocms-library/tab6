@@ -24,6 +24,11 @@
         <item name="qmui_skin_support_topbar_image_tint_color">@color/app_topbar_title_color</item>
         <item name="QMUITopBarStyle">@style/TooCMS.TopBar</item>
 
+        <!-- tabSegment -->
+        <item name="qmui_skin_support_tab_normal_color">?attr/qmui_config_color_gray_6</item>
+        <item name="qmui_skin_support_tab_selected_color">?attr/app_primary_color</item>
+        <item name="QMUITabSegmentStyle">@style/TooCMS.TabSegment</item>
+
         <!-- button-->
         <item name="QMUIButtonStyle">@style/TooCMS.RoundButton</item>
 
@@ -35,9 +40,6 @@
         <item name="qmui_empty_view_btn_normal_margin_top">25dp</item>
         <item name="qmui_loading_size">30dp</item>
         <!--        <item name="qmui_skin_support_loading_color">?attr/app_primary_color</item>-->
-
-        <!-- tabSegment -->
-        <item name="QMUITabSegmentStyle">@style/TooCMS.TabSegment</item>
 
         <!-- tipDialog -->
         <item name="qmui_tip_dialog_min_height">120dp</item>
