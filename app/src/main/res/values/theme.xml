@@ -3,21 +3,7 @@
 
     <style name="Sample" parent="TooCMS.Compat">
 
-        <!-- topbar -->
-        <item name="qmui_skin_support_topbar_bg">?attr/app_primary_color</item>
-        <item name="qmui_skin_support_topbar_title_color">@color/app_topbar_title_color</item>
-        <item name="qmui_skin_support_topbar_subtitle_color">@color/app_topbar_subtitle_color</item>
-        <item name="qmui_skin_support_topbar_text_btn_color_state_list">
-            @color/app_topbar_title_color
-        </item>
-        <item name="qmui_skin_support_topbar_image_tint_color">@color/app_topbar_title_color</item>
-
         <!-- 自定义 -->
         <item name="app_primary_color">@color/clr_main</item>
-        <item name="app_content_bg_color">@android:color/white</item>
-    </style>
-
-    <style name="Sample.Topbar" parent="TooCMS.TopBar">
-        <item name="qmui_topbar_left_back_drawable_id">@drawable/qmui_icon_topbar_back</item>
     </style>
 </resources>
