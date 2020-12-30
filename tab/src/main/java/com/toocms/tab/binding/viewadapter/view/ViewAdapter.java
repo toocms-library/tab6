@@ -5,12 +5,10 @@ import android.view.View;
 
 import androidx.databinding.BindingAdapter;
 
-import com.jakewharton.rxbinding2.view.RxView;
+import com.jakewharton.rxbinding4.view.RxView;
 import com.toocms.tab.binding.command.BindingCommand;
 
 import java.util.concurrent.TimeUnit;
-
-import io.reactivex.functions.Consumer;
 
 public class ViewAdapter {
 

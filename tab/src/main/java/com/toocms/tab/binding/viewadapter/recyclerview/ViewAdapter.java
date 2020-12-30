@@ -17,8 +17,7 @@ import com.toocms.tab.widget.adapter.BindingRecyclerViewAdapter;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import io.reactivex.functions.Consumer;
-import io.reactivex.subjects.PublishSubject;
+import io.reactivex.rxjava3.subjects.PublishSubject;
 
 public class ViewAdapter {
 
