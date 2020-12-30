@@ -1,3 +1,6 @@
+include ':tab-map'
+include ':tab-pay'
+include ':tab-share'
 include ':tab-expand'
 include ':tab'
 include ':tab'
