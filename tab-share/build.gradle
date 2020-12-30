@@ -1,0 +1,36 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion rootProject.ext.androidVersion.compileSdkVersion
+    buildToolsVersion rootProject.ext.androidVersion.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.androidVersion.minSdkVersion
+        targetSdkVersion rootProject.ext.androidVersion.targetSdkVersion
+        versionCode rootProject.ext.versionCode
+        versionName rootProject.ext.versionName
+
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        encoding "UTF-8"
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    compileOnly project(path: ':tab')
+    api files('libs/umeng-share-core-7.1.3.jar')
+    api files('libs/umeng-sharetool-7.1.3.jar')
+    api files('libs/umeng-share-wechat-simplify-7.1.3.jar')
+    api files('libs/umeng-share-QQ-simplify-7.1.3.jar')
+}
