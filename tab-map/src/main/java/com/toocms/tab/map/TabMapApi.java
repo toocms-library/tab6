@@ -20,36 +20,27 @@ public final class TabMapApi {
     /**
      * 获取定位 API
      *
-     * @return
+     * @return 定位类
      */
     public static TooCMSLocationApi getLocationApi() {
-        return TooCMSLocationApi.getInstance();
+        return new TooCMSLocationApi();
     }
 
     /**
      * 获取POI API
      *
-     * @return
+     * @return POI类
      */
     public static TooCMSPoiApi getPoiApi() {
-        return TooCMSPoiApi.getInstance();
+        return new TooCMSPoiApi();
     }
 
     /**
      * 获取选择具体坐标点 API
      *
-     * @return
+     * @return 选择位置类
      */
     public static TooCMSChoosingApi getChoosingApi() {
-        return TooCMSChoosingApi.getInstance();
-    }
-
-    /**
-     * 释放
-     */
-    public static void release() {
-        getLocationApi().release();
-        getPoiApi().release();
-        getChoosingApi().release();
+        return new TooCMSChoosingApi();
     }
 }

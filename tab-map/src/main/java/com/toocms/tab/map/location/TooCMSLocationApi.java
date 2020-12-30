@@ -70,19 +70,8 @@ public class TooCMSLocationApi {
         }
     };
 
-    private volatile static TooCMSLocationApi instance;
-
-    private TooCMSLocationApi() {
+    public TooCMSLocationApi() {
         client = new AMapLocationClient(ActivityUtils.getTopActivity());
-    }
-
-    public static TooCMSLocationApi getInstance() {
-        if (instance == null)
-            synchronized (TooCMSLocationApi.class) {
-                if (instance == null)
-                    instance = new TooCMSLocationApi();
-            }
-        return instance;
     }
 
     /**
@@ -131,19 +120,5 @@ public class TooCMSLocationApi {
      */
     public void stop() {
         if (client != null) client.stopLocation();
-    }
-
-    /**
-     * 释放
-     */
-    public void release() {
-        internalListener = null;
-        locationListener = null;
-        if (client != null) {
-            client.stopLocation();
-            client.onDestroy();
-        }
-        client = null;
-        instance = null;
     }
 }

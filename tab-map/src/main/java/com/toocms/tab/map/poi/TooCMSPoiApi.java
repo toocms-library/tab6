@@ -17,20 +17,10 @@ import com.toocms.tab.map.TabMapApi;
 
 public class TooCMSPoiApi {
 
-    private volatile static TooCMSPoiApi instance;
     private Context context;
 
-    private TooCMSPoiApi() {
+    public TooCMSPoiApi() {
         this.context = TooCMSApplication.getInstance();
-    }
-
-    public static TooCMSPoiApi getInstance() {
-        if (instance == null)
-            synchronized (TooCMSPoiApi.class) {
-                if (instance == null)
-                    instance = new TooCMSPoiApi();
-            }
-        return instance;
     }
 
     /**
@@ -89,12 +79,5 @@ public class TooCMSPoiApi {
         search.setOnPoiSearchListener(listener);
         if (searchBound != null) search.setBound(searchBound);
         search.searchPOIAsyn();
-    }
-
-    /**
-     * 释放
-     */
-    public void release() {
-        instance = null;
     }
 }

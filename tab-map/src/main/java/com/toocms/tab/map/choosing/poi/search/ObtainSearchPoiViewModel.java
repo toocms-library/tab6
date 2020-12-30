@@ -66,10 +66,4 @@ public class ObtainSearchPoiViewModel extends BaseViewModel {
                     }
                 });
     }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        TabMapApi.release();
-    }
 }

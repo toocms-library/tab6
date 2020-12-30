@@ -21,7 +21,6 @@ import com.qmuiteam.qmui.util.QMUIResHelper;
 import com.toocms.tab.base.BaseFragment;
 import com.toocms.tab.map.BR;
 import com.toocms.tab.map.R;
-import com.toocms.tab.map.TabMapApi;
 import com.toocms.tab.map.databinding.FgtObtainNearPoiBinding;
 import com.toocms.tab.map.utils.LocationUtils;
 
@@ -66,7 +65,6 @@ public class ObtainNearPoiFragment extends BaseFragment<FgtObtainNearPoiBinding,
 
             @Override
             public void deactivate() {
-                TabMapApi.release();
             }
         });
         // 地图加载完毕监听

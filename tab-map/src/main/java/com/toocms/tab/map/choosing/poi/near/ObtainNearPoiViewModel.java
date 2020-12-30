@@ -24,9 +24,7 @@ import com.toocms.tab.map.BR;
 import com.toocms.tab.map.R;
 import com.toocms.tab.map.TabMapApi;
 import com.toocms.tab.map.choosing.poi.search.ObtainSearchPoiFragment;
-import com.toocms.tab.map.location.TooCMSLocationApi;
 import com.toocms.tab.map.location.listener.LocationListener;
-import com.toocms.tab.map.poi.TooCMSPoiApi;
 
 /**
  * Author：Zero
@@ -59,7 +57,7 @@ public class ObtainNearPoiViewModel extends BaseViewModel implements PermissionU
      * 开始定位
      */
     protected void startLocation() {
-        TooCMSLocationApi.getInstance().start(new LocationListener() {
+        TabMapApi.getLocationApi().start(new LocationListener() {
             @Override
             public void onLocationSuccess(AMapLocation aMapLocation) {
                 cityCode = aMapLocation.getCityCode();
@@ -81,7 +79,7 @@ public class ObtainNearPoiViewModel extends BaseViewModel implements PermissionU
     }
 
     public void doSearch(double latitude, double longitude) {
-        TooCMSPoiApi.getInstance().doSearchPoi(
+        TabMapApi.getPoiApi().doSearchPoi(
                 latitude,
                 longitude,
                 1000,
@@ -114,11 +112,5 @@ public class ObtainNearPoiViewModel extends BaseViewModel implements PermissionU
     @Override
     public void onDenied() {
         doSearch(DEFAULT_LATITUDE, DEFAULT_LONGITUDE);
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        TabMapApi.release();
     }
 }

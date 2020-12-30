@@ -19,7 +19,6 @@ import com.amap.api.services.geocoder.RegeocodeAddress;
 import com.amap.api.services.geocoder.RegeocodeQuery;
 import com.amap.api.services.geocoder.RegeocodeResult;
 import com.blankj.utilcode.util.CollectionUtils;
-import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.PermissionUtils;
 import com.toocms.tab.base.BaseViewModel;
 import com.toocms.tab.binding.command.BindingCommand;
@@ -27,7 +26,6 @@ import com.toocms.tab.bus.Messenger;
 import com.toocms.tab.bus.event.SingleLiveEvent;
 import com.toocms.tab.map.TabMapApi;
 import com.toocms.tab.map.choosing.TooCMSChoosingApi;
-import com.toocms.tab.map.location.TooCMSLocationApi;
 import com.toocms.tab.map.location.listener.LocationListener;
 
 import java.math.RoundingMode;
@@ -129,7 +127,7 @@ public class ObtainPreciseLocationViewModel extends BaseViewModel implements Per
      * 开始定位
      */
     protected void startLocation() {
-        TooCMSLocationApi.getInstance().start(new LocationListener() {
+        TabMapApi.getLocationApi().start(new LocationListener() {
             @Override
             public void onLocationSuccess(AMapLocation aMapLocation) {
                 cityCode = aMapLocation.getCityCode();
@@ -164,11 +162,5 @@ public class ObtainPreciseLocationViewModel extends BaseViewModel implements Per
     @Override
     public void onDenied() {
         doSearch(DEFAULT_LONGITUDE, DEFAULT_LATITUDE);
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        TabMapApi.release();
     }
 }
