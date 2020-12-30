@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="shareViewModel"
+            type="com.toocms.sample.ui.expand.share.ShareViewModel" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="15dp">
+
+        <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+            onClickCommand="@{shareViewModel.doShare}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="弹出分享面板" />
+
+        <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+            onClickCommand="@{shareViewModel.qqShare}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="QQ分享" />
+
+        <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+            onClickCommand="@{shareViewModel.wechatShare}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="微信分享" />
+
+        <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+            onClickCommand="@{shareViewModel.customMenu}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="自定义菜单" />
+
+        <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+            onClickCommand="@{shareViewModel.qqLogin}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="@{shareViewModel.qqLoginStatus}" />
+
+        <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+            onClickCommand="@{shareViewModel.wechatLogin}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="@{shareViewModel.wechatLoginStatus}" />
+
+        <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+            onClickCommand="@{shareViewModel.sinaLogin}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="@{shareViewModel.sinaLoginStatus}" />
+    </LinearLayout>
+</layout>

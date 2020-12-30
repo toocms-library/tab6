@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="mapViewModel"
+            type="com.toocms.sample.ui.expand.map.MapViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="15dp">
+
+        <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+            onClickCommand="@{mapViewModel.startLocation}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="获取当前位置" />
+
+        <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+            onClickCommand="@{mapViewModel.getNearestPoi}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="获取最近的POI/AOI" />
+
+        <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+            onClickCommand="@{mapViewModel.getNearPoi}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="获取周边POI" />
+
+        <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+            onClickCommand="@{mapViewModel.getKeyWordPoi}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="获取北京市内'天安门'有关的POI" />
+
+        <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+            onClickCommand="@{mapViewModel.startPreciseLocationPage}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="精准定位" />
+
+        <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+            onClickCommand="@{mapViewModel.startNearPoiPage}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="附近POI选择" />
+    </LinearLayout>
+</layout>

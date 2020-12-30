@@ -16,6 +16,22 @@ android {
         dataBinding { enabled = true }
     }
 
+    signingConfigs {
+        release {
+            storeFile file('android.keystore')
+            storePassword "bay011645"
+            keyAlias "bay011645"
+            keyPassword "bay011645"
+        }
+
+        debug {
+            storeFile file('android.keystore')
+            storePassword "bay011645"
+            keyAlias "bay011645"
+            keyPassword "bay011645"
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -31,4 +47,9 @@ android {
 dependencies {
     implementation project(path: ':tab')
     implementation project(path: ':tab-expand')
+    implementation project(path: ':tab-map')
+    implementation project(path: ':tab-pay')
+    implementation project(path: ':tab-share')
+    implementation 'com.umeng.umsdk:share-sina:7.1.3'
+    implementation 'com.sina.weibo.sdk:core:4.4.3:openDefaultRelease@aar'
 }
