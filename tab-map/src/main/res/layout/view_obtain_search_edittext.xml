@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <EditText
+        android:id="@+id/obtain_search_poi_search"
+        android:layout_width="280dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="40dp"
+        android:background="@drawable/shape_bg_keyword"
+        android:drawableLeft="@drawable/ic_tabmap_flag_search"
+        android:drawablePadding="10dp"
+        android:gravity="center_vertical"
+        android:hint="请输入小区或大厦名称"
+        android:imeOptions="actionSearch"
+        android:paddingLeft="10dp"
+        android:singleLine="true"
+        android:textColor="#333333"
+        android:textColorHint="#999999"
+        android:textSize="14sp" />
+</FrameLayout>

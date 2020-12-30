@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="obtainSearchPoiViewModel"
+            type="com.toocms.tab.map.choosing.poi.search.ObtainSearchPoiViewModel" />
+
+        <import type="com.toocms.tab.binding.viewadapter.recyclerview.LineManagers" />
+
+        <import type="com.toocms.tab.binding.viewadapter.recyclerview.LayoutManagers" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/obtain_search_poi_list"
+            itemBinding="@{obtainSearchPoiViewModel.itemBinding}"
+            items="@{obtainSearchPoiViewModel.list}"
+            layoutManagerFactory="@{LayoutManagers.linear()}"
+            lineManagerFactory="@{LineManagers.horizontal()}"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+</layout>

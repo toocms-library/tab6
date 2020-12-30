@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="obtainPreciseLocationViewModel"
+            type="com.toocms.tab.map.choosing.location.ObtainPreciseLocationViewModel" />
+
+        <import type="android.text.TextUtils" />
+
+        <import type="android.view.View" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <com.amap.api.maps.TextureMapView
+                    android:id="@+id/obtain_precise_location_map"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:background="@android:color/white"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="12dp">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:singleLine="true"
+                            android:text="@{obtainPreciseLocationViewModel.name}"
+                            android:textColor="@color/clr_precise_loctaion_text_location"
+                            android:textSize="13sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="3dp"
+                            android:singleLine="true"
+                            android:text="@{obtainPreciseLocationViewModel.address}"
+                            android:textColor="@color/clr_precise_loctaion_text_address"
+                            android:textSize="11sp"
+                            android:visibility="@{obtainPreciseLocationViewModel.hasAddress?View.GONE:View.VISIBLE}" />
+                    </LinearLayout>
+
+                    <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+                        onClickCommand="@{obtainPreciseLocationViewModel.sure}"
+                        android:layout_width="50dp"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="15dp"
+                        android:padding="0dp"
+                        android:text="@string/str_drag_bottom_btn" />
+                </LinearLayout>
+            </LinearLayout>
+        </FrameLayout>
+    </LinearLayout>
+</layout>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--地址文字显示颜色-->
+    <color name="clr_precise_loctaion_text_location">#000000</color>
+    <color name="clr_precise_loctaion_text_address">#5E5E5E</color>
+</resources>

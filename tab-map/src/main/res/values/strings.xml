@@ -1,0 +1,4 @@
+<resources>
+    <!--拖拽地图-->
+    <string name="str_drag_bottom_btn">确定</string>
+</resources>

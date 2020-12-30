@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="obtainNearPoiViewModel"
+            type="com.toocms.tab.map.choosing.poi.near.ObtainNearPoiViewModel" />
+
+        <import type="com.toocms.tab.binding.viewadapter.recyclerview.LineManagers" />
+
+        <import type="com.toocms.tab.binding.viewadapter.recyclerview.LayoutManagers" />
+
+        <import type="com.blankj.utilcode.util.CollectionUtils" />
+
+        <import type="android.view.View" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/obtain_near_poi_search"
+            onClickCommand="@{obtainNearPoiViewModel.startSearchPoiPageForResult}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_location_on_black"
+            android:drawablePadding="10dp"
+            android:gravity="center_vertical"
+            android:padding="12dp"
+            android:text="请输入小区或大厦名称" />
+
+        <com.amap.api.maps.TextureMapView
+            android:id="@+id/obtain_near_poi_map"
+            android:layout_width="match_parent"
+            android:layout_height="250dp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/obtain_near_poi_items"
+            itemBinding="@{obtainNearPoiViewModel.itemBinding}"
+            items="@{obtainNearPoiViewModel.list}"
+            layoutManagerFactory="@{LayoutManagers.linear()}"
+            lineManagerFactory="@{LineManagers.horizontal()}"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="@{CollectionUtils.isEmpty(obtainNearPoiViewModel.list)?View.GONE:View.VISIBLE}" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="暂无数据"
+            android:textSize="15sp" />
+    </LinearLayout>
+</layout>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="nearPoiItemViewModel"
+            type="com.toocms.tab.map.choosing.poi.near.NearPoiItemViewModel" />
+
+    </data>
+
+    <LinearLayout
+        onClickCommand="@{nearPoiItemViewModel.itemClick}"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:gravity="center_vertical"
+        android:orientation="vertical"
+        android:padding="12dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{nearPoiItemViewModel.name}"
+            android:textColor="#ff343434"
+            android:textSize="14sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@{nearPoiItemViewModel.address}"
+            android:textColor="#ff9a9a9a"
+            android:textSize="12sp" />
+    </LinearLayout>
+</layout>
