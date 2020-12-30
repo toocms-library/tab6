@@ -6,7 +6,7 @@ ext {
     qmui = "2.0.0-alpha11"
     smart = "2.0.1"
     okhttp = "4.8.1"
-    rxhttp = "2.4.4"
+    rxhttp = "2.5.3"
     glide = "4.11.0"
 
     androidVersion = [
