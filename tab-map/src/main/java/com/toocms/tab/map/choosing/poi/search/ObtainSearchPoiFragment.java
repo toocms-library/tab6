@@ -24,7 +24,7 @@ public class ObtainSearchPoiFragment extends BaseFragment<FgtObtainSearchPoiBind
         viewModel.setCityCode(getArguments().getString("cityCode"));
         FrameLayout frameLayout = (FrameLayout) LayoutInflater.from(getContext()).inflate(R.layout.view_obtain_search_edittext, null);
         EditText editText = frameLayout.findViewById(R.id.obtain_search_poi_search);
-        Drawable drawable = QMUIResHelper.getAttrDrawable(getBaseFragmentActivity(), R.attr.app_map_search_flag_drawable_id);
+        Drawable drawable = QMUIResHelper.getAttrDrawable(getBaseFragmentActivity(), R.attr.app_map_search_poi_flag_drawable_id);
         if (drawable != null)
             editText.setCompoundDrawablesWithIntrinsicBounds(drawable, null, null, null);
         topBar.setCenterView(frameLayout);
