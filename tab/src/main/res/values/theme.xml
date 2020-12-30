@@ -20,7 +20,7 @@
     <attr name="app_map_zoom_level" format="float" />
     <attr name="app_map_marker_drawable_id" format="reference" />
     <attr name="app_map_near_poi_flag_drawable_id" format="reference" />
-    <attr name="app_map_search_flag_drawable_id" format="reference" />
+    <attr name="app_map_search_poi_flag_drawable_id" format="reference" />
 
     <style name="TooCMS.Compat" parent="QMUI.Compat.NoActionBar">
 
@@ -81,7 +81,7 @@
         <item name="app_map_zoom_level">18</item>
         <!--        <item name="app_map_marker_drawable_id">0</item>-->
         <!--        <item name="app_map_near_poi_flag_drawable_id">0</item>-->
-        <!--        <item name="app_map_search_flag_drawable_id">0</item>-->
+        <!--        <item name="app_map_search_poi_flag_drawable_id">0</item>-->
 
     </style>
 
