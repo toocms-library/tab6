@@ -3,6 +3,7 @@ package com.toocms.tab.base;
 import android.app.Activity;
 import android.app.Application;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -235,8 +236,31 @@ public class BaseViewModel<M extends BaseModel> extends ScopeViewModel implement
     }
 
     @Override
+    public void startFragmentForResult(Class<? extends BaseFragment> clz, int requestCode) {
+        startFragmentForResult(clz, null, requestCode);
+    }
+
+    @Override
+    public void startFragmentForResult(Class<? extends BaseFragment> clz, Bundle bundle, int requestCode) {
+        Map<String, Object> params = new HashMap<>();
+        params.put(ParameterField.FRAGMENT, clz);
+        if (!ObjectUtils.isEmpty(bundle))
+            params.put(ParameterField.BUNDLE, bundle);
+        params.put(ParameterField.REQUEST_CODE, requestCode);
+        uiChangeLiveData.getStartFragmentForResultEvent().postValue(params);
+    }
+
+    @Override
     public void finishFragment() {
         uiChangeLiveData.getFinishFragmentEvent().call();
+    }
+
+    @Override
+    public void setFragmentResult(int resultCode, Intent data) {
+        Map<String, Object> params = new HashMap<>();
+        params.put(ParameterField.RESULT_CODE, resultCode);
+        params.put(ParameterField.INTENT, data);
+        uiChangeLiveData.getSetFragmentResultEvent().postValue(params);
     }
 
     // ============================= 生命周期 =============================

@@ -2,19 +2,16 @@ package com.toocms.tab.base;
 
 import android.app.Activity;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewStub;
-import android.view.Window;
 import android.widget.FrameLayout;
 
 import androidx.annotation.LayoutRes;
 import androidx.annotation.NonNull;
-import androidx.core.view.ViewCompat;
 import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
 import androidx.fragment.app.Fragment;
@@ -34,9 +31,6 @@ import com.luck.picture.lib.entity.LocalMedia;
 import com.luck.picture.lib.listener.OnResultCallbackListener;
 import com.luck.picture.lib.style.PictureWindowAnimationStyle;
 import com.qmuiteam.qmui.arch.QMUIFragmentActivity;
-import com.qmuiteam.qmui.util.QMUIDisplayHelper;
-import com.qmuiteam.qmui.util.QMUIStatusBarHelper;
-import com.qmuiteam.qmui.util.QMUIViewHelper;
 import com.qmuiteam.qmui.widget.QMUIEmptyView;
 import com.qmuiteam.qmui.widget.QMUITopBarLayout;
 import com.qmuiteam.qmui.widget.dialog.QMUIDialog;
@@ -46,8 +40,8 @@ import com.toocms.tab.R;
 import com.toocms.tab.TooCMSApplication;
 import com.toocms.tab.base.UIChangeLiveData.ParameterField;
 import com.toocms.tab.bus.Messenger;
-import com.toocms.tab.imageload.engine.GlideEngine;
 import com.toocms.tab.configs.FileManager;
+import com.toocms.tab.imageload.engine.GlideEngine;
 
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
@@ -122,8 +116,8 @@ public abstract class BaseFragment<V extends ViewDataBinding, VM extends BaseVie
     }
 
     @Override
-    public void onDestroyView() {
-        super.onDestroyView();
+    public void onDestroy() {
+        super.onDestroy();
         Messenger.getDefault().unregister(viewModel);
         if (viewModel != null) {
             viewModel.removeRxBus();
@@ -362,8 +356,31 @@ public abstract class BaseFragment<V extends ViewDataBinding, VM extends BaseVie
     }
 
     @Override
+    public void startFragmentForResult(Class<? extends BaseFragment> clz, int requestCode) {
+        startFragmentForResult(clz, null, requestCode);
+    }
+
+    @Override
+    public void startFragmentForResult(Class<? extends BaseFragment> clz, Bundle bundle, int requestCode) {
+        ObjectUtils.requireNonNull(clz);
+        BaseFragment fragment = ReflectUtils.reflect(clz).newInstance().get();
+        if (ObjectUtils.isNotEmpty(bundle)) fragment.setArguments(bundle);
+        startFragmentForResult(fragment, requestCode);
+    }
+
+    @Override
     public void finishFragment() {
         popBackStack();
+    }
+
+    @Override
+    public void setFragmentResult(int resultCode, Intent data) {
+        super.setFragmentResult(resultCode, data);
+    }
+
+    @Override
+    protected void onFragmentResult(int requestCode, int resultCode, Intent data) {
+        super.onFragmentResult(requestCode, resultCode, data);
     }
 
     // 注册ViewModel与View的契约UI回调事件
@@ -442,8 +459,21 @@ public abstract class BaseFragment<V extends ViewDataBinding, VM extends BaseVie
             boolean[] isDestroyCurrent = (boolean[]) params.get(ParameterField.DESTROY_CURRENT);
             startFragment(clz, bundle, isDestroyCurrent);
         });
+        // 启动Fragment并等待返回值
+        viewModel.getUiChangeLiveData().getStartFragmentForResultEvent().observe(this, params -> {
+            Class<? extends BaseFragment> clz = (Class<? extends BaseFragment>) params.get(ParameterField.FRAGMENT);
+            Bundle bundle = (Bundle) params.get(ParameterField.BUNDLE);
+            int requestCode = (int) params.get(ParameterField.REQUEST_CODE);
+            startFragmentForResult(clz, bundle, requestCode);
+        });
         // 关闭Fragment
-        viewModel.getUiChangeLiveData().getFinishFragmentEvent().observe(this, v -> finishFragment());
+        viewModel.getUiChangeLiveData().getFinishFragmentEvent().observe(this, v -> ThreadUtils.runOnUiThreadDelayed(this::finishFragment, 100));
+        // 设置Fragment返回结果
+        viewModel.getUiChangeLiveData().getSetFragmentResultEvent().observe(this, params -> {
+            int resultCode = (int) params.get(ParameterField.RESULT_CODE);
+            Intent data = (Intent) params.get(ParameterField.INTENT);
+            setFragmentResult(resultCode, data);
+        });
     }
 
     //刷新布局

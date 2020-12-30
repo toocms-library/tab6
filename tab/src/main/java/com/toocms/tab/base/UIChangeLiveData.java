@@ -27,7 +27,9 @@ final class UIChangeLiveData extends SingleLiveEvent {
     private SingleLiveEvent<Map<String, Object>> startSelectMultipleAtyEvent;
 
     private SingleLiveEvent<Map<String, Object>> startFragmentEvent;
+    private SingleLiveEvent<Map<String, Object>> startFragmentForResultEvent;
     private SingleLiveEvent<Void> finishFragmentEvent;
+    private SingleLiveEvent<Map<String, Object>> setFragmentResultEvent;
 
     public SingleLiveEvent<Map<String, Object>> getShowTipEvent() {
         return showTipEvent = createLiveData(showTipEvent);
@@ -77,8 +79,16 @@ final class UIChangeLiveData extends SingleLiveEvent {
         return startFragmentEvent = createLiveData(startFragmentEvent);
     }
 
+    public SingleLiveEvent<Map<String, Object>> getStartFragmentForResultEvent() {
+        return startFragmentForResultEvent = createLiveData(startFragmentForResultEvent);
+    }
+
     public SingleLiveEvent<Void> getFinishFragmentEvent() {
         return finishFragmentEvent = createLiveData(finishFragmentEvent);
+    }
+
+    public SingleLiveEvent<Map<String, Object>> getSetFragmentResultEvent() {
+        return setFragmentResultEvent = createLiveData(setFragmentResultEvent);
     }
 
     private <T> SingleLiveEvent<T> createLiveData(SingleLiveEvent<T> liveData) {
@@ -117,6 +127,9 @@ final class UIChangeLiveData extends SingleLiveEvent {
         public static String FRAGMENT = "FRAGMENT";
         public static String BUNDLE = "BUNDLE";
         public static String DESTROY_CURRENT = "DESTROY_CURRENT";
+        public static String REQUEST_CODE = "REQUEST_CODE";
+        public static String RESULT_CODE = "RESULT_CODE";
+        public static String INTENT = "INTENT";
 
         // failed
         public static String ERROR_TEXT = "ERROR_TEXT";

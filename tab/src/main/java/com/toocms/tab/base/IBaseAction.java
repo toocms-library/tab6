@@ -2,6 +2,7 @@ package com.toocms.tab.base;
 
 import android.app.Activity;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -226,7 +227,32 @@ interface IBaseAction {
     void startFragment(Class<? extends BaseFragment> clz, Bundle bundle, boolean... isDestroyCurrent);
 
     /**
+     * 启动Fragment并等待返回值
+     *
+     * @param clz         Fragment类
+     * @param requestCode 请求标识
+     */
+    void startFragmentForResult(Class<? extends BaseFragment> clz, int requestCode);
+
+    /**
+     * 启动Fragment并等待返回值
+     *
+     * @param clz         Fragment类
+     * @param bundle      传输的参数
+     * @param requestCode 请求标识
+     */
+    void startFragmentForResult(Class<? extends BaseFragment> clz, Bundle bundle, int requestCode);
+
+    /**
      * 关闭Fragment
      */
     void finishFragment();
+
+    /**
+     * 设置Fragment返回结果
+     *
+     * @param resultCode 结果值
+     * @param data       传输数据
+     */
+    void setFragmentResult(int resultCode, Intent data);
 }
