@@ -98,6 +98,7 @@ public class TooCMSApplication extends MultiDexApplication {
                 "Umeng",
                 UMConfigure.DEVICE_TYPE_PHONE,
                 appConfig.getUmengPushSecret());
+        UMConfigure.setLogEnabled(BuildConfig.DEBUG);
         // 设置自动页面采集模式
         MobclickAgent.setPageCollectionMode(MobclickAgent.PageMode.AUTO);
         // 初始化App更新
