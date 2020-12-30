@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools">
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <attr name="app_primary_color" format="color" /> <!-- topbar -->
-    <attr name="app_content_bg_color" format="color" /> <!-- content-->
+    <attr name="app_primary_color" format="color" />     <!-- 主题色 -->
+    <attr name="app_content_bg_color" format="color" />     <!-- 背景色 -->
+    <attr name="app_topbar_left_back_color" format="color" />    <!-- 返回按钮颜色-->
 
     <!-- 引导页立即体验按钮的边距-->
     <attr name="app_guide_btn_margin_bottom" format="dimension" />
@@ -11,6 +12,15 @@
     <attr name="app_guide_btn_view_text_size" format="dimension" />
     <attr name="app_guide_btn_view_text_color" format="color" />
     <attr name="app_guide_btn_view_radius" format="dimension" />
+
+    <!-- 地图页样式配置 -->
+    <attr name="app_map_left_back_drawable_id" format="reference" />
+    <attr name="app_map_topbar_background_color" format="color" />
+    <attr name="app_map_topbar_title_color" format="color" />
+    <attr name="app_map_zoom_level" format="float" />
+    <attr name="app_map_marker_drawable_id" format="reference" />
+    <attr name="app_map_near_poi_flag_drawable_id" format="reference" />
+    <attr name="app_map_search_flag_drawable_id" format="reference" />
 
     <style name="TooCMS.Compat" parent="QMUI.Compat.NoActionBar">
 
@@ -30,6 +40,9 @@
         <item name="QMUITabSegmentStyle">@style/TooCMS.TabSegment</item>
 
         <!-- button-->
+        <item name="qmui_skin_support_round_btn_bg_color">?attr/app_primary_color</item>
+        <item name="qmui_skin_support_round_btn_border_color">?attr/app_primary_color</item>
+        <item name="qmui_skin_support_round_btn_text_color">@color/qmui_config_color_white</item>
         <item name="QMUIButtonStyle">@style/TooCMS.RoundButton</item>
 
         <!-- emptyview -->
@@ -50,7 +63,8 @@
 
         <!-- 主题色 -->
         <item name="app_primary_color">@color/clr_main</item>
-        <item name="app_content_bg_color">@android:color/white</item>
+        <item name="app_content_bg_color">@color/qmui_config_color_white</item>
+        <item name="app_topbar_left_back_color">@color/qmui_config_color_white</item>
 
         <!-- 引导页 -->
         <item name="app_guide_btn_margin_bottom">40dp</item>
@@ -59,10 +73,20 @@
         <item name="app_guide_btn_view_text_size">14sp</item>
         <item name="app_guide_btn_view_text_color">@color/qmui_config_color_white</item>
         <item name="app_guide_btn_view_radius">0dp</item>
+
+        <!-- 地图 -->
+        <item name="app_map_left_back_drawable_id">@drawable/topbar_left_back</item>
+        <item name="app_map_topbar_background_color">?attr/app_primary_color</item>
+        <item name="app_map_topbar_title_color">@color/app_topbar_title_color</item>
+        <item name="app_map_zoom_level">18</item>
+        <!--        <item name="app_map_marker_drawable_id">0</item>-->
+        <!--        <item name="app_map_near_poi_flag_drawable_id">0</item>-->
+        <!--        <item name="app_map_search_flag_drawable_id">0</item>-->
+
     </style>
 
     <style name="TooCMS.TopBar" parent="QMUI.TopBar">
-        <item name="qmui_topbar_left_back_drawable_id">@drawable/qmui_icon_topbar_back</item>
+        <item name="qmui_topbar_left_back_drawable_id">@drawable/topbar_left_back</item>
         <item name="qmui_topbar_height">@dimen/topbar_height_size</item>
         <item name="qmui_topbar_image_btn_height">@dimen/topbar_height_size</item>
         <item name="qmui_topbar_title_text_size">@dimen/topbar_title_size</item>

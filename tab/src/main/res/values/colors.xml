@@ -2,10 +2,8 @@
 <resources>
 
     <!--App主色调-->
-    <color name="clr_main">#1B88EE</color>
+    <color name="clr_main">@color/qmui_config_color_black</color>
 
-    <!-- topbar标题文字颜色 -->
-    <color name="app_topbar_bg">?attr/app_primary_color</color>
     <!-- topbar标题文字颜色 -->
     <color name="app_topbar_title_color">@android:color/white</color>
     <!-- APP副标题文字颜色 -->
