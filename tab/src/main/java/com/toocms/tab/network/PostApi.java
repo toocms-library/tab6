@@ -5,8 +5,7 @@ import androidx.annotation.NonNull;
 import com.blankj.utilcode.util.ObjectUtils;
 
 import java.io.File;
-import java.util.Iterator;
-import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Map;
 
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
@@ -72,7 +71,7 @@ public class PostApi {
         return TooCMSObservable.create(param).asTooCMSResponse(cls);
     }
 
-    public <T> TooCMSObservable<T> asTooCMSResponseList(Class<T> cls) {
+    public <T> TooCMSObservable<List<T>> asTooCMSResponseList(Class<T> cls) {
         return TooCMSObservable.create(param).asTooCMSResponseList(cls);
     }
 }
