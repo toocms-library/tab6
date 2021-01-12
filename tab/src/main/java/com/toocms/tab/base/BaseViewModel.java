@@ -39,7 +39,7 @@ import java.util.Map;
 public class BaseViewModel<M extends BaseModel> extends ScopeViewModel implements IBaseViewModel, IBaseAction {
 
     protected M model;
-    private UIChangeLiveData uiChangeLiveData;
+    private UIChangeLiveData uiChangeLiveData = new UIChangeLiveData();
     private WeakReference<LifecycleProvider> lifecycle;  //弱引用持有
 
     public BaseViewModel(@NonNull Application application) {
@@ -60,9 +60,6 @@ public class BaseViewModel<M extends BaseModel> extends ScopeViewModel implement
     }
 
     public UIChangeLiveData getUiChangeLiveData() {
-        if (uiChangeLiveData == null) {
-            uiChangeLiveData = new UIChangeLiveData();
-        }
         return uiChangeLiveData;
     }
 
