@@ -28,8 +28,8 @@ android {
 }
 
 dependencies {
-    implementation 'com.github.toocms-library.tab6:tab:6.0.0-alpha04' // 核心必须依赖
-    implementation 'com.github.toocms-library.tab6:tab-expand:6.0.0-alpha04' // 扩展包
+    implementation 'com.github.toocms-library.tab6:tab:6.0.0-alpha05' // 核心必须依赖
+    implementation 'com.github.toocms-library.tab6:tab-expand:6.0.0-alpha05' // 扩展包
 }
 ```
 ## 集成方法
