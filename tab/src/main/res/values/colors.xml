@@ -8,6 +8,8 @@
     <color name="app_topbar_title_color">@android:color/white</color>
     <!-- APP副标题文字颜色 -->
     <color name="app_topbar_subtitle_color">@android:color/white</color>
+    <!-- 列表分割线颜色 -->
+    <color name="app_list_divider">#F6F4F4</color>
 
     <color name="xupdate_default_theme_color">?attr/app_primary_color</color>
 

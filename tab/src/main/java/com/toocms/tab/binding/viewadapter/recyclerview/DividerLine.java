@@ -3,24 +3,26 @@ package com.toocms.tab.binding.viewadapter.recyclerview;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
 import android.view.View;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.blankj.utilcode.util.ConvertUtils;
 import com.blankj.utilcode.util.SizeUtils;
+import com.toocms.tab.R;
 
 public class DividerLine extends RecyclerView.ItemDecoration {
 
-    private static final String TAG = DividerLine.class.getCanonicalName();
     //默认分隔线厚度为1dp
     private static final int DEFAULT_DIVIDER_SIZE = 1;
-    //控制分隔线的属性,值为一个drawable
-    private static final int ATTRS[] = {android.R.attr.listDivider};
-    //divider对应的drawable
-    private Drawable dividerDrawable;
-    private Context mContext;
+    //默认分隔线颜色的属性,值为一个color
+    private static final int[] ATTRS = {R.attr.app_list_divider};
+    private Paint paint;
+    //divider的颜色
+    private int dividerColor;
     private int dividerSize;
     //默认为null
     private LineDrawMode mMode = null;
@@ -33,11 +35,14 @@ public class DividerLine extends RecyclerView.ItemDecoration {
     }
 
     public DividerLine(Context context) {
-        mContext = context;
         //获取样式中对应的属性值
         TypedArray attrArray = context.obtainStyledAttributes(ATTRS);
-        dividerDrawable = attrArray.getDrawable(0);
+        dividerColor = attrArray.getColor(0, Color.parseColor("#F6F4F4"));
         attrArray.recycle();
+
+        paint = new Paint();
+        paint.setAntiAlias(true);
+        paint.setColor(dividerColor);
     }
 
     public DividerLine(Context context, LineDrawMode mode) {
@@ -47,7 +52,14 @@ public class DividerLine extends RecyclerView.ItemDecoration {
 
     public DividerLine(Context context, int dividerSize, LineDrawMode mode) {
         this(context, mode);
-        this.dividerSize = dividerSize;
+        this.dividerSize = ConvertUtils.dp2px(dividerSize);
+    }
+
+    public DividerLine(Context context, int dividerSize, int dividerColor, LineDrawMode mode) {
+        this(context, mode);
+        this.dividerSize = ConvertUtils.dp2px(dividerSize);
+        this.dividerColor = dividerColor;
+        paint.setColor(dividerColor);
     }
 
     public int getDividerSize() {
@@ -55,7 +67,15 @@ public class DividerLine extends RecyclerView.ItemDecoration {
     }
 
     public void setDividerSize(int dividerSize) {
-        this.dividerSize = dividerSize;
+        this.dividerSize = ConvertUtils.dp2px(dividerSize);
+    }
+
+    public int getDividerColor() {
+        return dividerColor;
+    }
+
+    public void setDividerColor(int dividerColor) {
+        this.dividerColor = dividerColor;
     }
 
     public LineDrawMode getMode() {
@@ -82,14 +102,14 @@ public class DividerLine extends RecyclerView.ItemDecoration {
         }
         switch (getMode()) {
             case VERTICAL:
-                drawVertical(c, parent, state);
+                drawVertical(c, parent);
                 break;
             case HORIZONTAL:
-                drawHorizontal(c, parent, state);
+                drawHorizontal(c, parent);
                 break;
             case BOTH:
-                drawHorizontal(c, parent, state);
-                drawVertical(c, parent, state);
+                drawHorizontal(c, parent);
+                drawVertical(c, parent);
                 break;
         }
     }
@@ -99,9 +119,8 @@ public class DividerLine extends RecyclerView.ItemDecoration {
      *
      * @param c
      * @param parent
-     * @param state
      */
-    private void drawVertical(Canvas c, RecyclerView parent, RecyclerView.State state) {
+    private void drawVertical(Canvas c, RecyclerView parent) {
         final int childCount = parent.getChildCount();
         for (int i = 0; i < childCount; i++) {
             final View child = parent.getChildAt(i);
@@ -110,8 +129,7 @@ public class DividerLine extends RecyclerView.ItemDecoration {
             final int bottom = child.getBottom() + params.bottomMargin;
             final int left = child.getRight() + params.rightMargin;
             final int right = getDividerSize() == 0 ? left + SizeUtils.dp2px(DEFAULT_DIVIDER_SIZE) : left + getDividerSize();
-            dividerDrawable.setBounds(left, top, right, bottom);
-            dividerDrawable.draw(c);
+            c.drawRect(left, top, right, bottom, paint);
         }
     }
 
@@ -120,9 +138,8 @@ public class DividerLine extends RecyclerView.ItemDecoration {
      *
      * @param c
      * @param parent
-     * @param state
      */
-    private void drawHorizontal(Canvas c, RecyclerView parent, RecyclerView.State state) {
+    private void drawHorizontal(Canvas c, RecyclerView parent) {
         int childCount = parent.getChildCount();
         for (int i = 0; i < childCount; i++) {
             //分别为每个item绘制分隔线,首先要计算出item的边缘在哪里,给分隔线定位,定界
@@ -137,9 +154,7 @@ public class DividerLine extends RecyclerView.ItemDecoration {
             final int right = child.getRight() - params.rightMargin;
             //分隔线的底边所在的位置(那就是分隔线的顶边加上分隔线的高度)
             final int bottom = getDividerSize() == 0 ? top + SizeUtils.dp2px(DEFAULT_DIVIDER_SIZE) : top + getDividerSize();
-            dividerDrawable.setBounds(left, top, right, bottom);
-            //画上去
-            dividerDrawable.draw(c);
+            c.drawRect(left, top, right, bottom, paint);
         }
     }
 
