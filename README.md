@@ -12,6 +12,8 @@
 allprojects {
      repositories {
         maven { url "https://jitpack.io" }
+        maven { url 'https://dl.bintray.com/umsdk/release' }
+        maven { url "https://dl.bintray.com/thelasterstar/maven/" }
     }
 }
 ```
@@ -19,6 +21,7 @@ allprojects {
 ```
 android {
     defaultConfig {
+        multiDexEnabled true
         dataBinding { enabled = true }  // 启动DataBinding
     }
     compileOptions {    
@@ -28,8 +31,8 @@ android {
 }
 
 dependencies {
-    implementation 'com.github.toocms-library.tab6:tab:6.0.0-alpha05' // 核心必须依赖
-    implementation 'com.github.toocms-library.tab6:tab-expand:6.0.0-alpha05' // 扩展包
+    implementation 'com.github.toocms-library.tab6:tab:6.0.0-alpha06' // 核心必须依赖
+    implementation 'com.github.toocms-library.tab6:tab-expand:6.0.0-alpha06' // 扩展包
 }
 ```
 ## 集成方法
@@ -41,6 +44,8 @@ dependencies {
 <style name="Sample" parent="TooCMS.Compat">
    <!-- 主题色 -->
    <item name="app_primary_color">@color/clr_main</item>
+   <!-- 列表分割线颜色 -->
+   <item name="app_list_divider">@color/app_list_divider</item>
 </style>
 ```
 4. 在Manifest文件中指定该自定义主题
