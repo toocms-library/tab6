@@ -9,11 +9,14 @@ import android.graphics.Rect;
 import android.view.View;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.blankj.utilcode.util.ConvertUtils;
 import com.blankj.utilcode.util.SizeUtils;
 import com.toocms.tab.R;
+
+import java.util.Objects;
 
 public class DividerLine extends RecyclerView.ItemDecoration {
 
@@ -74,8 +77,8 @@ public class DividerLine extends RecyclerView.ItemDecoration {
      * @param state
      */
     @Override
-    public void onDrawOver(@NonNull Canvas c, @NonNull RecyclerView parent, @NonNull RecyclerView.State state) {
-        super.onDrawOver(c, parent, state);
+    public void onDraw(@NonNull Canvas c, @NonNull RecyclerView parent, @NonNull RecyclerView.State state) {
+        super.onDraw(c, parent, state);
         if (mMode == null) {
             throw new IllegalStateException("assign LineDrawMode,please!");
         }
@@ -96,7 +99,35 @@ public class DividerLine extends RecyclerView.ItemDecoration {
     @Override
     public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
         super.getItemOffsets(outRect, view, parent, state);
-        outRect.set(0, 0, 0, dividerSize);
+        int right = dividerSize;
+        int bottom = dividerSize;
+        int itemPosition = parent.getChildAdapterPosition(view);
+        if (isLastSpan(itemPosition, parent)) {
+            right = 0;
+        }
+        if (isLastRow(itemPosition, parent)) {
+            bottom = 0;
+        }
+        outRect.set(0, 0, right, bottom);
+    }
+
+    public boolean isLastRow(int itemPosition, RecyclerView parent) {
+        RecyclerView.LayoutManager layoutManager = parent.getLayoutManager();
+        if (layoutManager instanceof GridLayoutManager) {
+            int spanCount = ((GridLayoutManager) layoutManager).getSpanCount();
+            int itemCount = Objects.requireNonNull(parent.getAdapter()).getItemCount();
+            return (itemCount - itemPosition - 1) < spanCount;
+        }
+        return false;
+    }
+
+    public boolean isLastSpan(int itemPosition, RecyclerView parent) {
+        RecyclerView.LayoutManager layoutManager = parent.getLayoutManager();
+        if (layoutManager instanceof GridLayoutManager) {
+            int spanCount = ((GridLayoutManager) layoutManager).getSpanCount();
+            return (itemPosition + 1) % spanCount == 0;
+        }
+        return false;
     }
 
     /**
@@ -108,12 +139,12 @@ public class DividerLine extends RecyclerView.ItemDecoration {
     private void drawVertical(Canvas c, RecyclerView parent) {
         final int childCount = parent.getChildCount();
         for (int i = 0; i < childCount; i++) {
-            final View child = parent.getChildAt(i);
-            final RecyclerView.LayoutParams params = (RecyclerView.LayoutParams) child.getLayoutParams();
-            final int top = child.getTop() - params.topMargin;
-            final int bottom = child.getBottom() + params.bottomMargin;
-            final int left = child.getRight() + params.rightMargin;
-            final int right = left + dividerSize;
+            View child = parent.getChildAt(i);
+            RecyclerView.LayoutParams params = (RecyclerView.LayoutParams) child.getLayoutParams();
+            int top = child.getTop() - params.topMargin;
+            int bottom = child.getBottom() + params.bottomMargin;
+            int left = child.getRight() + params.rightMargin;
+            int right = left + dividerSize;
             c.drawRect(left, top, right, bottom, paint);
         }
     }
@@ -127,18 +158,12 @@ public class DividerLine extends RecyclerView.ItemDecoration {
     private void drawHorizontal(Canvas c, RecyclerView parent) {
         int childCount = parent.getChildCount();
         for (int i = 0; i < childCount; i++) {
-            //分别为每个item绘制分隔线,首先要计算出item的边缘在哪里,给分隔线定位,定界
-            final View child = parent.getChildAt(i);
-            //RecyclerView的LayoutManager继承自ViewGroup,支持了margin
-            final RecyclerView.LayoutParams params = (RecyclerView.LayoutParams) child.getLayoutParams();
-            //child的左边缘(也是分隔线的左边)
-            final int left = child.getLeft() - params.leftMargin;
-            //child的底边缘(恰好是分隔线的顶边)
-            final int top = child.getBottom() + params.topMargin;
-            //child的右边(也是分隔线的右边)
-            final int right = child.getRight() - params.rightMargin;
-            //分隔线的底边所在的位置(那就是分隔线的顶边加上分隔线的高度)
-            final int bottom = top + dividerSize;
+            View child = parent.getChildAt(i);
+            RecyclerView.LayoutParams params = (RecyclerView.LayoutParams) child.getLayoutParams();
+            int left = child.getLeft() - params.leftMargin;
+            int top = child.getBottom() + params.bottomMargin;
+            int right = child.getRight() + params.rightMargin;
+            int bottom = top + dividerSize;
             c.drawRect(left, top, right, bottom, paint);
         }
     }
