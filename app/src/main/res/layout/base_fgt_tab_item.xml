@@ -5,8 +5,6 @@
 
         <import type="com.toocms.tab.binding.viewadapter.recyclerview.LayoutManagers" />
 
-        <import type="android.graphics.Color" />
-
         <import type="com.toocms.tab.binding.viewadapter.recyclerview.LineManagers" />
 
         <variable
@@ -18,7 +16,7 @@
         itemBinding="@{tabViewModel.itemBinding}"
         items="@{tabViewModel.tabItems}"
         layoutManagerFactory="@{LayoutManagers.grid(2)}"
-        lineManagerFactory='@{LineManagers.both(1,Color.parseColor("#333333"))}'
+        lineManagerFactory='@{LineManagers.both(1,0xff666666)}'
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 </layout>
