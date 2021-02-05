@@ -99,16 +99,32 @@ public class DividerLine extends RecyclerView.ItemDecoration {
     @Override
     public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
         super.getItemOffsets(outRect, view, parent, state);
+        int itemPosition = parent.getChildAdapterPosition(view);
         int right = dividerSize;
         int bottom = dividerSize;
-        int itemPosition = parent.getChildAdapterPosition(view);
-        if (isLastSpan(itemPosition, parent)) {
-            right = 0;
+        switch (mMode) {
+            case VERTICAL:
+                if (isLastSpan(itemPosition, parent)) {
+                    right = 0;
+                }
+                outRect.set(0, 0, right, 0);
+                break;
+            case HORIZONTAL:
+                if (isLastRow(itemPosition, parent)) {
+                    bottom = 0;
+                }
+                outRect.set(0, 0, 0, bottom);
+                break;
+            case BOTH:
+                if (isLastSpan(itemPosition, parent)) {
+                    right = 0;
+                }
+                if (isLastRow(itemPosition, parent)) {
+                    bottom = 0;
+                }
+                outRect.set(0, 0, right, bottom);
+                break;
         }
-        if (isLastRow(itemPosition, parent)) {
-            bottom = 0;
-        }
-        outRect.set(0, 0, right, bottom);
     }
 
     public boolean isLastRow(int itemPosition, RecyclerView parent) {
@@ -116,7 +132,7 @@ public class DividerLine extends RecyclerView.ItemDecoration {
         if (layoutManager instanceof GridLayoutManager) {
             int spanCount = ((GridLayoutManager) layoutManager).getSpanCount();
             int itemCount = Objects.requireNonNull(parent.getAdapter()).getItemCount();
-            return (itemCount - itemPosition - 1) < spanCount;
+            return (itemCount - itemPosition) <= spanCount;
         }
         return false;
     }
@@ -125,7 +141,9 @@ public class DividerLine extends RecyclerView.ItemDecoration {
         RecyclerView.LayoutManager layoutManager = parent.getLayoutManager();
         if (layoutManager instanceof GridLayoutManager) {
             int spanCount = ((GridLayoutManager) layoutManager).getSpanCount();
-            return (itemPosition + 1) % spanCount == 0;
+            GridLayoutManager.SpanSizeLookup spanSizeLookup = ((GridLayoutManager) layoutManager).getSpanSizeLookup();
+            if (spanSizeLookup.getSpanSize(itemPosition) == spanCount) return true;
+            return itemPosition % spanCount == 0;
         }
         return false;
     }
