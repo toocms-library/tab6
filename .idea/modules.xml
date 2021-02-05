@@ -2,13 +2,13 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Tab6.iml" filepath="$PROJECT_DIR$/.idea/modules/Tab6.iml" group="Tab6" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/app.iml" group="Tab6/app" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/tab/tab.iml" filepath="$PROJECT_DIR$/.idea/modules/tab/tab.iml" group="Tab6/tab" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/tab-expand/tab-expand.iml" filepath="$PROJECT_DIR$/.idea/modules/tab-expand/tab-expand.iml" group="Tab6/tab-expand" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/tab-map/tab-map.iml" filepath="$PROJECT_DIR$/.idea/modules/tab-map/tab-map.iml" group="Tab6/tab-map" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/tab-pay/tab-pay.iml" filepath="$PROJECT_DIR$/.idea/modules/tab-pay/tab-pay.iml" group="Tab6/tab-pay" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/tab-share/tab-share.iml" filepath="$PROJECT_DIR$/.idea/modules/tab-share/tab-share.iml" group="Tab6/tab-share" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Tab6.iml" filepath="$PROJECT_DIR$/.idea/modules/Tab6.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Tab6.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Tab6.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/tab/Tab6.tab.iml" filepath="$PROJECT_DIR$/.idea/modules/tab/Tab6.tab.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/tab-expand/Tab6.tab-expand.iml" filepath="$PROJECT_DIR$/.idea/modules/tab-expand/Tab6.tab-expand.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/tab-map/Tab6.tab-map.iml" filepath="$PROJECT_DIR$/.idea/modules/tab-map/Tab6.tab-map.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/tab-pay/Tab6.tab-pay.iml" filepath="$PROJECT_DIR$/.idea/modules/tab-pay/Tab6.tab-pay.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/tab-share/Tab6.tab-share.iml" filepath="$PROJECT_DIR$/.idea/modules/tab-share/Tab6.tab-share.iml" />
     </modules>
   </component>
 </project>

@@ -1,7 +1,7 @@
 ext {
 
-    versionCode = 20210204
-    versionName = "6.0.0-alpha07"
+    versionCode = 20210205
+    versionName = "6.0.0-alpha08"
 
     qmui = "2.0.0-alpha11"
     smart = "2.0.1"
