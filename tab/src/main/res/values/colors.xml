@@ -12,6 +12,6 @@
     <color name="app_list_divider">#F6F4F4</color>
 
     <color name="xupdate_default_theme_color">?attr/app_primary_color</color>
-
+    <color name="tag_flow_layout_default_secondary_text">#8a000000</color>
     <color name="divider">#E3E3E3</color>
 </resources>
