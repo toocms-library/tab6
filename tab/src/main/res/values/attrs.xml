@@ -60,6 +60,13 @@
         <attr name="observableList" format="reference" />
     </declare-styleable>
 
+    <declare-styleable name="QMUIFloatLayout">
+        <attr name="items" />
+        <attr name="custom" format="reference" />
+        <attr name="onLineCountChangeListener" format="reference" />
+        <attr name="onFloatItemClickListener" format="reference" />
+    </declare-styleable>
+
     <declare-styleable name="RecyclerView" parent="AdapterView">
         <attr name="lineManagerFactory" format="reference" />
         <attr name="spanSizeLookup" format="reference" />
@@ -316,15 +323,4 @@
         <attr name="bl_moveSpeed" format="float" />
     </declare-styleable>
     <attr name="BannerLayoutStyle" format="integer" />
-
-    <declare-styleable name="TagFlowLayout">
-        <attr name="backGroundColor" format="reference|color" />
-<!--        <attr name="tagsTextSize" format="dimension" />-->
-<!--        <attr name="tagsTextColor" format="reference|color" />-->
-<!--        <attr name="tagsBackgroundColor" format="reference|color" />-->
-<!--        <attr name="tagsBackgroundPressedColor" format="reference|color" />-->
-<!--        <attr name="tagsBackgroundCorners" format="dimension" />-->
-        <attr name="tagsHorizontalSpace" format="dimension" />
-        <attr name="tagsVerticalSpace" format="dimension" />
-    </declare-styleable>
 </resources>
