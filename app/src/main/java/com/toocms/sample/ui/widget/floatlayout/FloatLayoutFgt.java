@@ -1,4 +1,4 @@
-package com.toocms.sample.ui.widget.tagflow;
+package com.toocms.sample.ui.widget.floatlayout;
 
 import com.toocms.sample.BR;
 import com.toocms.sample.R;
@@ -10,7 +10,7 @@ import com.toocms.sample.ui.base.BaseFgt;
  * Author：Zero
  * Date：2021/2/19
  */
-public class TagFlowLayoutFgt extends BaseFgt<FgtWidgetTagflowBinding, TagFlowLayoutViewModel> {
+public class FloatLayoutFgt extends BaseFgt<FgtWidgetTagflowBinding, FloatLayoutViewModel> {
 
     @Override
     protected void onFragmentCreated() {
@@ -24,7 +24,7 @@ public class TagFlowLayoutFgt extends BaseFgt<FgtWidgetTagflowBinding, TagFlowLa
 
     @Override
     public int getVariableId() {
-        return BR.tagFlowLayoutViewModel;
+        return BR.floatLayoutViewModel;
     }
 
     @Override

@@ -5,21 +5,37 @@
     <data>
 
         <variable
-            name="tagFlowLayoutViewModel"
-            type="com.toocms.sample.ui.widget.tagflow.TagFlowLayoutViewModel" />
+            name="floatLayoutViewModel"
+            type="com.toocms.sample.ui.widget.floatlayout.FloatLayoutViewModel" />
 
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:orientation="vertical"
         android:padding="10dp">
 
-        <com.toocms.tab.widget.tagflowlayout.TagFlowLayout
-            items="@{tagFlowLayoutViewModel.list}"
-            onTagClickListener="@{tagFlowLayoutViewModel.listener}"
+        <com.qmuiteam.qmui.widget.QMUIFloatLayout
+            custom="@{floatLayoutViewModel.solidStyle}"
+            items="@{floatLayoutViewModel.list}"
+            onFloatItemClickListener="@{floatLayoutViewModel.listener}"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            android:layout_weight="1"
+            app:layout_constraintTop_toTopOf="parent"
+            app:qmui_childHorizontalSpacing="15dp"
+            app:qmui_childVerticalSpacing="10dp" />
+
+        <com.qmuiteam.qmui.widget.QMUIFloatLayout
+            custom="@{floatLayoutViewModel.hollowStyle}"
+            items="@{floatLayoutViewModel.list}"
+            onFloatItemClickListener="@{floatLayoutViewModel.listener}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:layout_constraintTop_toTopOf="parent"
+            app:qmui_childHorizontalSpacing="15dp"
+            app:qmui_childVerticalSpacing="10dp" />
+    </LinearLayout>
 </layout>
