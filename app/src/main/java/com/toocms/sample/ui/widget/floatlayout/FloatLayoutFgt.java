@@ -2,7 +2,7 @@ package com.toocms.sample.ui.widget.floatlayout;
 
 import com.toocms.sample.BR;
 import com.toocms.sample.R;
-import com.toocms.sample.databinding.FgtWidgetTagflowBinding;
+import com.toocms.sample.databinding.FgtWidgetFloatlayoutBinding;
 import com.toocms.sample.ui.base.BaseFgt;
 
 /**
@@ -10,7 +10,7 @@ import com.toocms.sample.ui.base.BaseFgt;
  * Author：Zero
  * Date：2021/2/19
  */
-public class FloatLayoutFgt extends BaseFgt<FgtWidgetTagflowBinding, FloatLayoutViewModel> {
+public class FloatLayoutFgt extends BaseFgt<FgtWidgetFloatlayoutBinding, FloatLayoutViewModel> {
 
     @Override
     protected void onFragmentCreated() {
@@ -19,7 +19,7 @@ public class FloatLayoutFgt extends BaseFgt<FgtWidgetTagflowBinding, FloatLayout
 
     @Override
     protected int getLayoutResId() {
-        return R.layout.fgt_widget_tagflow;
+        return R.layout.fgt_widget_floatlayout;
     }
 
     @Override
