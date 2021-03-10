@@ -60,11 +60,11 @@ public class PictureAdderView extends RecyclerView implements PictureAdderAdapte
     private void parseStyle(Context context, AttributeSet attrs) {
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.PictureAdderView);
         spacing = (int) typedArray.getDimension(R.styleable.PictureAdderView_spacing, SizeUtils.dp2px(10));
-        numColumns = (int) typedArray.getDimension(R.styleable.PictureAdderView_numColumns, 4);
-        chooseMode = (int) typedArray.getDimension(R.styleable.PictureAdderView_chooseMode, 1);
-        maxSelectNum = (int) typedArray.getDimension(R.styleable.PictureAdderView_maxSelectNum, 9);
-        videoMaxSecond = (int) typedArray.getDimension(R.styleable.PictureAdderView_videoMaxSecond, 120);
-        recordVideoSecond = (int) typedArray.getDimension(R.styleable.PictureAdderView_recordVideoSecond, 120);
+        numColumns = typedArray.getInteger(R.styleable.PictureAdderView_numColumns, 4);
+        chooseMode = typedArray.getInt(R.styleable.PictureAdderView_chooseMode, 1);
+        maxSelectNum = typedArray.getInteger(R.styleable.PictureAdderView_maxSelectNum, 9);
+        videoMaxSecond = typedArray.getInteger(R.styleable.PictureAdderView_videoMaxSecond, 120);
+        recordVideoSecond = typedArray.getInteger(R.styleable.PictureAdderView_recordVideoSecond, 120);
     }
 
     private void init(@NonNull Context context) {

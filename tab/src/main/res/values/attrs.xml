@@ -1,30 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <attr name="requestFocus" format="boolean" />
     <attr name="itemView" format="reference" />
     <attr name="items" format="reference" />
+    <attr name="itemIds" format="reference" />
     <attr name="adapter" format="reference" />
 
     <attr name="onScrollChangeCommand" format="reference" />
     <attr name="onScrollStateChangedCommand" format="reference" />
     <attr name="url" format="string" />
-    <attr name="onTouchCommand" format="reference" />
 
-    <attr name="onClickCommand" format="reference" />
-    <attr name="onLongClickCommand" format="reference" />
-    <attr name="onFocusChangeCommand" format="reference" />
-    <attr name="isThrottleFirst" format="boolean" />
-    <attr name="currentView" format="reference" />
+    <attr name="onRefreshCommand" format="reference" />
     <attr name="isVisible" format="boolean" />
 
-    <declare-styleable name="View">
-        <attr name="onClickCommand" />
-        <attr name="onLongClickCommand" />
-        <attr name="onFocusChangeCommand" />
-        <attr name="onTouchCommand" />
-        <attr name="isThrottleFirst" />
-        <attr name="currentView" />
+    <declare-styleable name="MenuItem">
+        <attr name="onClickCommand" format="reference" />
+        <attr name="onLongClickCommand" format="reference" />
+        <attr name="onFocusChangeCommand" format="reference" />
+        <attr name="onTouchCommand" format="reference" />
+        <attr name="isThrottleFirst" format="boolean" />
+        <attr name="currentView" format="reference" />
+        <attr name="isVisible" />
     </declare-styleable>
 
     <declare-styleable name="AdapterView">
@@ -32,11 +28,11 @@
         <attr name="items" />
         <attr name="adapter" />
         <attr name="dropDownItemView" format="reference" />
-        <attr name="itemIds" format="reference" />
+        <attr name="itemIds" />
         <attr name="itemIsEnabled" format="reference" />
         <attr name="onScrollStateChangedCommand" />
         <attr name="onScrollChangeCommand" />
-        <attr name="onLoadMoreCommand" format="reference" />
+
     </declare-styleable>
 
     <declare-styleable name="TextView">
@@ -68,6 +64,10 @@
     </declare-styleable>
 
     <declare-styleable name="RecyclerView" parent="AdapterView">
+        <attr name="items" />
+        <attr name="adapter" />
+        <attr name="viewHolder" format="reference" />
+        <attr name="itemIds" />
         <attr name="lineManagerFactory" format="reference" />
         <attr name="spanSizeLookup" format="reference" />
         <attr name="itemBinding" format="reference" />
@@ -77,7 +77,7 @@
 
     <declare-styleable name="SmartRefreshLayout">
         <attr name="onRefreshCommand" />
-        <attr name="onLoadMoreCommand" />
+        <attr name="onLoadMoreCommand" format="reference" />
     </declare-styleable>
 
     <declare-styleable name="RadioGroup">
@@ -124,7 +124,7 @@
     </declare-styleable>
 
     <declare-styleable name="SwipeRefreshLayout">
-        <attr name="onRefreshCommand" format="reference" />
+        <attr name="onRefreshCommand" />
         <attr name="refreshing" format="boolean" />
     </declare-styleable>
 
@@ -164,10 +164,10 @@
 
     <declare-styleable name="PictureAdderView">
         <attr name="spacing" format="dimension" />
-        <attr name="numColumns" format="dimension" />
-        <attr name="maxSelectNum" format="dimension" />
-        <attr name="videoMaxSecond" format="dimension" />
-        <attr name="recordVideoSecond" format="dimension" />
+        <attr name="numColumns" format="integer" />
+        <attr name="maxSelectNum" format="integer" />
+        <attr name="videoMaxSecond" format="integer" />
+        <attr name="recordVideoSecond" format="integer" />
         <attr name="chooseMode">
             <flag name="all" value="0" />
             <flag name="image" value="1" />
