@@ -20,7 +20,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="20dp"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:chooseMode="image"
+            app:layout_constraintTop_toTopOf="parent"
+            app:maxSelectNum="4" />
 
         <!--  MLGB，text属性不支持直接中文拼接 -->
         <TextView
