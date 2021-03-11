@@ -5,6 +5,8 @@
     <attr name="app_content_bg_color" format="color" />     <!-- 背景色 -->
     <attr name="app_topbar_left_back_color" format="color" />    <!-- 返回按钮颜色-->
     <attr name="app_list_divider" format="color" />   <!-- 列表分割线颜色-->
+    <attr name="app_bottom_tab_segment_height" format="dimension" />
+    <attr name="app_bottom_tab_segment_background" format="color" />
 
     <!-- 引导页立即体验按钮的边距-->
     <attr name="app_guide_btn_margin_bottom" format="dimension" />
@@ -66,6 +68,8 @@
         <item name="app_primary_color">@color/clr_main</item>
         <item name="app_content_bg_color">@color/qmui_config_color_white</item>
         <item name="app_topbar_left_back_color">@color/qmui_config_color_white</item>
+        <item name="app_bottom_tab_segment_height">@dimen/bottom_tab_segment_height</item>
+        <item name="app_bottom_tab_segment_background">@color/qmui_config_color_white</item>
         <item name="app_list_divider">@color/app_list_divider</item>
 
         <!-- 引导页 -->
