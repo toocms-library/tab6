@@ -1,6 +1,7 @@
 package com.toocms.tab.network;
 
 import com.blankj.utilcode.util.ObjectUtils;
+import com.blankj.utilcode.util.ToastUtils;
 import com.toocms.tab.base.BaseViewModel;
 import com.toocms.tab.crash.CrashStore;
 import com.toocms.tab.network.exception.OnError;
@@ -68,7 +69,9 @@ public class TooCMSObservable<T> {
 
     public Disposable request(Consumer<? super T> onNext) {
         return request(onNext, (OnError) error -> {
-            if (!error.isLogicException()) {
+            if (error.isLogicException()) {
+                ToastUtils.showShort(error.getMessage());
+            } else {
                 error.getThrowable().printStackTrace();
                 // 处理错误日志
                 CrashStore.uploadCrashLog(error.getThrowable(), rxHttp.getUrl());

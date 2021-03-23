@@ -1,6 +1,7 @@
 package com.toocms.tab.network;
 
 import com.blankj.utilcode.util.ObjectUtils;
+import com.blankj.utilcode.util.ToastUtils;
 import com.rxjava.rxlife.ObservableLife;
 import com.rxjava.rxlife.RxLife;
 import com.toocms.tab.base.BaseViewModel;
@@ -53,10 +54,10 @@ public class TooCMSObservableLife<T> {
 
     public Disposable request(Consumer<? super T> onNext) {
         return request(onNext, (OnError) error -> {
-            if (!error.isLogicException()) {
-                viewModel.showFailed(error.getMessage(), v -> {
-                    request(onNext);
-                });
+            if (error.isLogicException()) {
+                ToastUtils.showShort(error.getMessage());
+            } else {
+                viewModel.showFailed(error.getMessage(), v -> request(onNext));
                 error.getThrowable().printStackTrace();
                 // 处理错误日志
                 CrashStore.uploadCrashLog(error.getThrowable(), rxHttp.getUrl());
