@@ -245,7 +245,6 @@ public final class CrashStore {
      * @param url
      */
     public static void uploadCrashLog(Throwable throwable, String url) {
-        if (BuildConfig.DEBUG) return;
         HttpParams params = new HttpParams();
         params.put("p_flag", application.getString(R.string.app_name)); // 项目名
         params.put("shoujixinghao", getDeviceModelName());   // 手机型号

@@ -98,7 +98,7 @@ public class TooCMSApplication extends MultiDexApplication {
                 "Umeng",
                 UMConfigure.DEVICE_TYPE_PHONE,
                 appConfig.getUmengPushSecret());
-        UMConfigure.setLogEnabled(BuildConfig.DEBUG);
+        UMConfigure.setLogEnabled(true);
         // 设置自动页面采集模式
         MobclickAgent.setPageCollectionMode(MobclickAgent.PageMode.AUTO);
         // 初始化App更新
@@ -120,7 +120,7 @@ public class TooCMSApplication extends MultiDexApplication {
 
     private LoggingInterceptor getInterceptor() {
         return new LoggingInterceptor.Builder()
-                .loggable(BuildConfig.DEBUG)
+                .loggable(true)
                 .setLevel(Level.BODY)
                 .log(Platform.INFO)
                 .request("Request")
@@ -140,7 +140,7 @@ public class TooCMSApplication extends MultiDexApplication {
 
     private void initUpdate() {
         XUpdate.get()
-                .debug(BuildConfig.DEBUG)
+                .debug(true)
                 .isWifiOnly(false)
                 .setApkCacheDir(FileManager.getDownloadPath())
                 .param("package", EncryptUtils.encryptMD5ToString(getPackageName()))
