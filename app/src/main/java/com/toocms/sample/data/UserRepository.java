@@ -58,7 +58,7 @@ public class UserRepository extends LoginStatusRepository {
     }
 
     private void readUserInfo() {
-        User user = new User();
+        user = new User();
         for (Field field : user.getClass().getDeclaredFields()) {
             ReflectUtils.reflect(user).field(field.getName(), sp.getString(field.getName()));
         }
