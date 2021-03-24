@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="historyViewModel"
+            type="com.toocms.sample.ui.expand.history.HistoryViewModel" />
+
+        <import type="com.toocms.tab.binding.viewadapter.recyclerview.LineManagers" />
+
+        <import type="com.toocms.tab.binding.viewadapter.recyclerview.LayoutManagers" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <EditText
+            android:id="@+id/search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:imeOptions="actionSearch"
+            android:singleLine="true"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            items="@{historyViewModel.list}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            app:itemBinding="@{historyViewModel.itemBinding}"
+            app:layoutManagerFactory="@{LayoutManagers.linear()}"
+            app:layout_constraintTop_toBottomOf="@id/search"
+            app:lineManagerFactory="@{LineManagers.horizontal()}" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
