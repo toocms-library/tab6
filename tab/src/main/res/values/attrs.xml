@@ -13,7 +13,7 @@
     <attr name="onRefreshCommand" format="reference" />
     <attr name="isVisible" format="boolean" />
 
-    <declare-styleable name="MenuItem">
+    <declare-styleable name="View">
         <attr name="onClickCommand" format="reference" />
         <attr name="onLongClickCommand" format="reference" />
         <attr name="onFocusChangeCommand" format="reference" />
@@ -32,7 +32,6 @@
         <attr name="itemIsEnabled" format="reference" />
         <attr name="onScrollStateChangedCommand" />
         <attr name="onScrollChangeCommand" />
-
     </declare-styleable>
 
     <declare-styleable name="TextView">
@@ -139,8 +138,6 @@
     <declare-styleable name="BaseImageBanner">
         <attr name="items" />
         <attr name="columnNum" format="integer" />
-        <attr name="selectColor" format="color" />
-        <attr name="unSelectColor" format="color" />
         <attr name="onItemClickCommand" />
     </declare-styleable>
 
