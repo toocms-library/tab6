@@ -15,5 +15,7 @@
         onItemClickListener="@{navigationItemViewModel.listener}"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:bb_indicatorSelectColor="@color/qmui_config_color_red"
+        app:bb_indicatorUnselectColor="@color/qmui_config_color_gray_9"
         app:bb_isLoopEnable="false" />
 </layout>

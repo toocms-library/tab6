@@ -14,5 +14,7 @@
         items="@{advertItemViewModel.bannerItems}"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:bb_indicatorSelectColor="@color/qmui_config_color_red"
+        app:bb_indicatorUnselectColor="@color/qmui_config_color_gray_9"
         app:bb_scale="0.5" />
 </layout>
