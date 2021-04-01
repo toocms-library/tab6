@@ -10,9 +10,13 @@ android {
         versionCode rootProject.ext.versionCode
         versionName rootProject.ext.versionName
 
-        consumerProguardFiles "consumer-rules.pro"
+        vectorDrawables.useSupportLibrary = true
 
-        dataBinding { enabled = true }
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildFeatures {
+        dataBinding = true
     }
 
     buildTypes {

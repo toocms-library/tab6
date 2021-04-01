@@ -12,9 +12,11 @@ android {
 
         multiDexEnabled true
         vectorDrawables.useSupportLibrary true
-        dataBinding { enabled = true }
-
         consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildFeatures {
+        dataBinding = true
     }
 
     buildTypes {
