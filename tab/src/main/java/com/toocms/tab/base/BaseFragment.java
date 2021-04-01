@@ -223,7 +223,7 @@ public abstract class BaseFragment<V extends ViewDataBinding, VM extends BaseVie
 
     @Override
     public void removeProgress() {
-        if (emptyView.isShowing()) emptyView.hide();
+        if (emptyView.isLoading() && emptyView.isShowing()) emptyView.hide();
         hideTip();
     }
 
