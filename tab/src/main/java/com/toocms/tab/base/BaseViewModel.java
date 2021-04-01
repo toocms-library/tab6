@@ -136,8 +136,14 @@ public class BaseViewModel<M extends BaseModel> extends ScopeViewModel implement
 
     @Override
     public void showFailed(String error, View.OnClickListener listener) {
+        showFailed(error, null, listener);
+    }
+
+    @Override
+    public void showFailed(String error, String buttonText, View.OnClickListener listener) {
         Map<String, Object> params = new HashMap<>();
         params.put(ParameterField.ERROR_TEXT, error);
+        params.put(ParameterField.ERROR_BUTTON_TEXT, buttonText);
         params.put(ParameterField.ERROR_LISTENER, listener);
         uiChangeLiveData.getShowFailedEvent().postValue(params);
     }

@@ -109,6 +109,15 @@ interface IBaseAction {
     void showFailed(String error, View.OnClickListener listener);
 
     /**
+     * 显示异常视图
+     *
+     * @param error      异常信息
+     * @param buttonText 按钮文字
+     * @param listener   重试按钮点击监听
+     */
+    void showFailed(String error, String buttonText, View.OnClickListener listener);
+
+    /**
      * 启动Activity
      *
      * @param clz Activity类

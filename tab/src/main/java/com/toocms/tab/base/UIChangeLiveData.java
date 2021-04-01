@@ -133,6 +133,7 @@ final class UIChangeLiveData extends SingleLiveEvent {
 
         // failed
         public static String ERROR_TEXT = "ERROR_TEXT";
+        public static String ERROR_BUTTON_TEXT = "ERROR_BUTTON_TEXT";
         public static String ERROR_LISTENER = "ERROR_LISTENER";
     }
 }

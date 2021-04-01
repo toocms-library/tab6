@@ -22,6 +22,7 @@ import com.blankj.utilcode.util.ActivityUtils;
 import com.blankj.utilcode.util.ArrayUtils;
 import com.blankj.utilcode.util.ObjectUtils;
 import com.blankj.utilcode.util.ReflectUtils;
+import com.blankj.utilcode.util.StringUtils;
 import com.blankj.utilcode.util.ThreadUtils;
 import com.blankj.utilcode.util.ToastUtils;
 import com.luck.picture.lib.PictureSelector;
@@ -233,7 +234,12 @@ public abstract class BaseFragment<V extends ViewDataBinding, VM extends BaseVie
 
     @Override
     public void showFailed(String error, View.OnClickListener listener) {
-        emptyView.show(false, error, null, getString(R.string.base_str_retry), listener);
+        showFailed(error, null, listener);
+    }
+
+    @Override
+    public void showFailed(String error, String buttonText, View.OnClickListener listener) {
+        emptyView.show(false, error, null, StringUtils.isEmpty(buttonText) ? getString(R.string.base_str_retry) : buttonText, listener);
     }
 
     @Override
@@ -429,8 +435,9 @@ public abstract class BaseFragment<V extends ViewDataBinding, VM extends BaseVie
         // 显示错误视图
         viewModel.getUiChangeLiveData().getShowFailedEvent().observe(this, params -> {
             String error = (String) params.get(ParameterField.ERROR_TEXT);
+            String buttonText = (String) params.get(ParameterField.ERROR_BUTTON_TEXT);
             View.OnClickListener listener = (View.OnClickListener) params.get(ParameterField.ERROR_LISTENER);
-            showFailed(error, listener);
+            showFailed(error, buttonText, listener);
         });
         // 跳转单选图片
         viewModel.getUiChangeLiveData().getStartSelectSignAtyEvent().observe(this, params -> {
