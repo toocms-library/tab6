@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="pickerViewModel"
+            type="com.toocms.sample.ui.widget.picker.PickerViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="15dp">
+
+        <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+            onClickCommand="@{pickerViewModel.showDatePickerCommand}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="底部日期选择器" />
+
+        <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+            onClickCommand="@{pickerViewModel.showTimePickerCommand}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="底部时间选择器" />
+
+        <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+            onClickCommand="@{pickerViewModel.showPickerDialogCommand}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="弹框形式日期时间选择器" />
+
+        <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+            onClickCommand="@{pickerViewModel.showOptionsPickerCommand}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="条件选择器" />
+    </LinearLayout>
+</layout>
