@@ -8,7 +8,12 @@
     <attr name="app_bottom_tab_segment_height" format="dimension" />
     <attr name="app_bottom_tab_segment_background" format="color" />
 
-    <!-- 引导页立即体验按钮的边距-->
+    <!-- 选择器标题栏配置 -->
+    <attr name="app_picker_topbar_title_color" format="color" />
+    <attr name="app_picker_topbar_bg_color" format="color" />
+    <attr name="app_picker_button_color" format="color" />
+
+    <!-- 引导页立即体验按钮的边距 -->
     <attr name="app_guide_btn_margin_bottom" format="dimension" />
     <attr name="app_guide_btn_padding_horizontal" format="dimension" />
     <attr name="app_guide_btn_padding_vertical" format="dimension" />
@@ -71,6 +76,11 @@
         <item name="app_bottom_tab_segment_height">@dimen/bottom_tab_segment_height</item>
         <item name="app_bottom_tab_segment_background">@color/qmui_config_color_white</item>
         <item name="app_list_divider">@color/app_list_divider</item>
+
+        <!-- 选择器 -->
+        <item name="app_picker_topbar_title_color">@color/qmui_config_color_black</item>
+        <item name="app_picker_topbar_bg_color">@color/picker_view_bg_topbar</item>
+        <item name="app_picker_button_color">?attr/app_primary_color</item>
 
         <!-- 引导页 -->
         <item name="app_guide_btn_margin_bottom">40dp</item>

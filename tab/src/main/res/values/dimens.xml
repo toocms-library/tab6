@@ -7,4 +7,11 @@
     <dimen name="crash_horizontal_margin">40dp</dimen>
     <dimen name="crash_vertical_margin">20dp</dimen>
     <dimen name="crash_vertical_margin2">40dp</dimen>
+
+    <!--WheelView-->
+    <dimen name="default_wheel_view_text_size">20sp</dimen>
+    <dimen name="picker_view_topbar_padding">20dp</dimen>
+    <dimen name="picker_view_topbar_height">44dp</dimen>
+    <dimen name="picker_size_title_text">24sp</dimen>
+    <dimen name="picker_md_button_textsize">22sp</dimen>
 </resources>

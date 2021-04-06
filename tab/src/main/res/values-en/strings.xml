@@ -45,4 +45,13 @@
 
     <string name="guide_try_immediately">Try immediately</string>
     <string name="guide_jump">Skip</string>
+
+    <string name="picker_view_cancel">Cancel</string>
+    <string name="picker_view_submit">Confirm</string>
+    <string name="picker_view_year">Year</string>
+    <string name="picker_view_month">Month</string>
+    <string name="picker_view_day">Day</string>
+    <string name="picker_view_hours">Hour</string>
+    <string name="picker_view_minutes">Minute</string>
+    <string name="picker_view_seconds">Seconds</string>
 </resources>

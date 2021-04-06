@@ -3,14 +3,16 @@
 
     <!--App主色调-->
     <color name="clr_main">@color/qmui_config_color_black</color>
-
     <!-- topbar标题文字颜色 -->
     <color name="app_topbar_title_color">@android:color/white</color>
     <!-- APP副标题文字颜色 -->
     <color name="app_topbar_subtitle_color">@android:color/white</color>
     <!-- 列表分割线颜色 -->
     <color name="app_list_divider">#F6F4F4</color>
-
+    <!-- XUpdate -->
     <color name="xupdate_default_theme_color">?attr/app_primary_color</color>
     <color name="divider">#E3E3E3</color>
+    <!-- PickerView -->
+    <color name="picker_view_bg_topbar">#F5F5F5</color>
+    <color name="picker_view_bg_color_overlay">#60000000</color>
 </resources>

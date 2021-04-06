@@ -141,7 +141,7 @@
         <attr name="onItemClickCommand" />
     </declare-styleable>
 
-    <!--=========================================================== View  ==============================================================-->
+    <!--========================================= View  =========================================-->
 
     <declare-styleable name="XNumberProgressBar">
         <attr name="xnpb_current" format="integer" />
@@ -180,7 +180,7 @@
         <attr name="dot_color" format="color" />
     </declare-styleable>
 
-    <!--============================Banner=========================================-->
+    <!--========================================= Banner =========================================-->
 
     <!-- BaseBanner -->
     <declare-styleable name="BaseBanner">
@@ -320,4 +320,19 @@
         <attr name="bl_moveSpeed" format="float" />
     </declare-styleable>
     <attr name="BannerLayoutStyle" format="integer" />
+
+    <!--========================================= Picker =========================================-->
+
+    <declare-styleable name="WheelView">
+        <attr name="wv_gravity" format="enum">
+            <enum name="center" value="17" />
+            <enum name="left" value="3" />
+            <enum name="right" value="5" />
+        </attr>
+        <attr name="wv_textSize" format="dimension" />
+        <attr name="wv_textColorOut" format="color" />
+        <attr name="wv_textColorCenter" format="color" />
+        <attr name="wv_dividerColor" format="color" />
+        <attr name="wv_lineSpacingMultiplier" format="float" />
+    </declare-styleable>
 </resources>

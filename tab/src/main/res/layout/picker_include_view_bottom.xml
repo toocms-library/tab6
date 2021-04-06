@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/app_picker_topbar_bg_color">
+
+    <Button
+        android:id="@+id/btnCancel"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:background="@android:color/transparent"
+        android:gravity="start|center_vertical"
+        android:paddingStart="@dimen/picker_view_topbar_padding"
+        android:text="@string/picker_view_cancel"
+        android:textColor="?attr/app_picker_button_color"
+        android:textSize="@dimen/picker_md_button_textsize" />
+
+    <Button
+        android:id="@+id/btnSubmit"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentEnd="true"
+        android:background="@android:color/transparent"
+        android:gravity="end|center_vertical"
+        android:paddingEnd="@dimen/picker_view_topbar_padding"
+        android:text="@string/picker_view_submit"
+        android:textColor="?attr/app_picker_button_color"
+        android:textSize="@dimen/picker_md_button_textsize" />
+</RelativeLayout>
