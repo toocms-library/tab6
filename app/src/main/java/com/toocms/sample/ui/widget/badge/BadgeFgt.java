@@ -16,9 +16,6 @@ public class BadgeFgt extends BaseFgt<FgtWidgetBadgeBinding, BaseViewModel> {
     @Override
     protected void onFragmentCreated() {
         topBar.setTitle("角标");
-        Badge badge = new BadgeView(getContext());
-        badge.bindTarget(binding.message);
-        badge.setBadgeNumber(5);
     }
 
     @Override
