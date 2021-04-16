@@ -36,8 +36,11 @@ public class AppConfig implements IAppConfig {
     public void initJarForWeApplication(Application application) {
         // 第三方账号所对应的唯一标识
         PlatformConfig.setQQZone("1105240612", "2iDzT9GvL7L9Q9bg");
+        PlatformConfig.setQQFileProvider("com.toocms.sample.fileprovider");
         PlatformConfig.setWeixin("wx0f7b622f264f30f5", "c5da5d5cc432d38358a850ad20f4f9fc");
+        PlatformConfig.setWXFileProvider("com.toocms.sample.fileprovider");
         PlatformConfig.setSinaWeibo("1008244763", "bd40713f78c08084bcdc3b49c358fb1b", "http://sns.whalecloud.com");
+        PlatformConfig.setSinaFileProvider("com.toocms.sample.fileprovider");
         // 注册推送服务
 //        TabPush.getInstance(application).register(true);
 //        RxHttp.init(createClient(), true);

@@ -24,29 +24,5 @@
         <meta-data
             android:name="com.amap.api.v2.apikey"
             android:value="6cd6c32ac049bbcf2131f2235b13af18" />
-
-        <!-- 分享和登录都要注册的Activity -->
-        <!--QQ/QZONE-->
-        <!--这里需要注意的是android:scheme="tencent100371282"这个属性tencent后边的数字需要改成QQ和QZone的AppId-->
-        <activity
-            android:name="com.tencent.tauth.AuthActivity"
-            android:launchMode="singleTask"
-            android:noHistory="true">
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-
-                <data android:scheme="tencent1105240612" />
-            </intent-filter>
-        </activity>
-
-        <!-- 微信登录页面 -->
-        <activity
-            android:name=".wxapi.WXEntryActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize"
-            android:exported="true"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
     </application>
 </manifest>
