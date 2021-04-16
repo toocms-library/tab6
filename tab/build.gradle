@@ -81,10 +81,6 @@ dependencies {
     api thirdDependencies["umeng-utdid"]
     api thirdDependencies["umeng-asms"]
     api thirdDependencies["umeng-crash"]
-    api thirdDependencies["umeng-oaid-lenovo"]
-    api thirdDependencies["umeng-oaid-mi"]
-    api thirdDependencies["umeng-oaid-oppo"]
-    api thirdDependencies["umeng-oaid-vivo"]
 
     annotationProcessor compilerDependencies["glide-compiler"]
     annotationProcessor compilerDependencies["arch-compiler"]
