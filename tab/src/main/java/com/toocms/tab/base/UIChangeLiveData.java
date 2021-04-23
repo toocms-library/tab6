@@ -22,6 +22,7 @@ final class UIChangeLiveData extends SingleLiveEvent {
 
     private SingleLiveEvent<Void> showEmptyEvent;
     private SingleLiveEvent<Map<String, Object>> showFailedEvent;
+    private SingleLiveEvent<Void> removeEmptyAndFailedEvent;
 
     private SingleLiveEvent<Map<String, Object>> startSelectSignAtyEvent;
     private SingleLiveEvent<Map<String, Object>> startSelectMultipleAtyEvent;
@@ -65,6 +66,10 @@ final class UIChangeLiveData extends SingleLiveEvent {
 
     public SingleLiveEvent<Map<String, Object>> getShowFailedEvent() {
         return showFailedEvent = createLiveData(showFailedEvent);
+    }
+
+    public SingleLiveEvent<Void> getRemoveEmptyAndFailedEvent() {
+        return removeEmptyAndFailedEvent = createLiveData(removeEmptyAndFailedEvent);
     }
 
     public SingleLiveEvent<Map<String, Object>> getStartSelectSignAtyEvent() {

@@ -149,6 +149,11 @@ public class BaseViewModel<M extends BaseModel> extends ScopeViewModel implement
     }
 
     @Override
+    public void removeEmptyAndFailed() {
+        uiChangeLiveData.getRemoveEmptyAndFailedEvent().call();
+    }
+
+    @Override
     public void startActivity(Class<? extends Activity> clz) {
         startActivity(clz, null);
     }

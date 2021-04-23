@@ -118,6 +118,11 @@ interface IBaseAction {
     void showFailed(String error, String buttonText, View.OnClickListener listener);
 
     /**
+     * 移除空视图和异常视图
+     */
+    void removeEmptyAndFailed();
+
+    /**
      * 启动Activity
      *
      * @param clz Activity类
