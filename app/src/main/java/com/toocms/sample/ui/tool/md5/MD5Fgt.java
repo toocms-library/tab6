@@ -30,4 +30,9 @@ public class MD5Fgt extends BaseFgt<FgtToolMd5Binding, MD5ViewModel> {
     protected void viewObserver() {
         viewModel.setText.observe(this, s -> binding.tvMd5.setText(s));
     }
+
+    @Override
+    protected boolean isEnableHideSoftInput() {     // 关闭隐藏键盘
+        return false;
+    }
 }

@@ -30,6 +30,5 @@ public class BadgeFgt extends BaseFgt<FgtWidgetBadgeBinding, BaseViewModel> {
 
     @Override
     protected void viewObserver() {
-
     }
 }

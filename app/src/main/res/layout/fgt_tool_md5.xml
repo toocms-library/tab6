@@ -15,9 +15,21 @@
         android:orientation="vertical"
         android:padding="20dp">
 
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <com.qmuiteam.qmui.alpha.QMUIAlphaTextView
+            android:id="@+id/tv_md5"
+            onClickCommand="@{md5viewModel.copy}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:orientation="horizontal">
 
             <TextView
@@ -39,11 +51,5 @@
                 android:text="生成MD5" />
         </LinearLayout>
 
-        <com.qmuiteam.qmui.alpha.QMUIAlphaTextView
-            android:id="@+id/tv_md5"
-            onClickCommand="@{md5viewModel.copy}"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp" />
     </LinearLayout>
 </layout>
