@@ -31,11 +31,11 @@ android {
 }
 
 dependencies {
-    implementation 'com.github.toocms-library.tab6:tab:6.0.0-alpha21' // 核心必须依赖
-    implementation 'com.github.toocms-library.tab6:tab-expand:6.0.0-alpha21' // 扩展包
-    implementation 'com.github.toocms-library.tab6:tab-pay:6.0.0-alpha21'   // 支付包
-    implementation 'com.github.toocms-library.tab6:tab-share:6.0.0-alpha21'   // 分享包
-    implementation 'com.github.toocms-library.tab6:tab-map:6.0.0-alpha21'   // 地图包
+    implementation 'com.github.toocms-library.tab6:tab:6.0.0-alpha22' // 核心必须依赖
+    implementation 'com.github.toocms-library.tab6:tab-expand:6.0.0-alpha22' // 扩展包
+    implementation 'com.github.toocms-library.tab6:tab-pay:6.0.0-alpha22'   // 支付包
+    implementation 'com.github.toocms-library.tab6:tab-share:6.0.0-alpha22'   // 分享包
+    implementation 'com.github.toocms-library.tab6:tab-map:6.0.0-alpha22'   // 地图包
 }
 ```
 ## 集成方法
