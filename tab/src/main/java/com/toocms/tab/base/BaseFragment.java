@@ -86,6 +86,10 @@ public abstract class BaseFragment<V extends ViewDataBinding, VM extends BaseVie
         return null;
     }
 
+    protected boolean isEnableHideSoftInput() {
+        return true;
+    }
+
     // ================================== 初始化 ==================================
 
     @Override
@@ -108,6 +112,8 @@ public abstract class BaseFragment<V extends ViewDataBinding, VM extends BaseVie
         initVVM();
         //注册ViewModel与View的契约事件回调逻辑
         registerUIChangeLiveDataCallBack();
+        // 控制是否启用点击空白隐藏键盘
+        getBaseActivity().setEnableHideSoftInput(isEnableHideSoftInput());
         //页面数据初始化方法
         onFragmentCreated();
         //页面事件监听的方法，一般用于ViewModel层转到View层的事件注册
@@ -240,6 +246,11 @@ public abstract class BaseFragment<V extends ViewDataBinding, VM extends BaseVie
     @Override
     public void showFailed(String error, String buttonText, View.OnClickListener listener) {
         emptyView.show(false, error, null, StringUtils.isEmpty(buttonText) ? getString(R.string.base_str_retry) : buttonText, listener);
+    }
+
+    @Override
+    public void removeEmptyAndFailed() {
+        if (emptyView.isShowing()) emptyView.hide();
     }
 
     @Override
@@ -439,6 +450,8 @@ public abstract class BaseFragment<V extends ViewDataBinding, VM extends BaseVie
             View.OnClickListener listener = (View.OnClickListener) params.get(ParameterField.ERROR_LISTENER);
             showFailed(error, buttonText, listener);
         });
+        // 移除空视图以及错误视图
+        viewModel.getUiChangeLiveData().getRemoveEmptyAndFailedEvent().observe(this, v -> removeEmptyAndFailed());
         // 跳转单选图片
         viewModel.getUiChangeLiveData().getStartSelectSignAtyEvent().observe(this, params -> {
             int chooseMode = (int) params.get(ParameterField.SELECT_PICTURE_MODE);
