@@ -12,11 +12,13 @@ import com.qmuiteam.qmui.arch.QMUIFragmentActivity;
 
 public abstract class BaseActivity extends QMUIFragmentActivity {
 
+    private boolean isEnableHideSoftInput;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         super.onCreate(savedInstanceState);
-        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
     }
 
     /**
@@ -24,12 +26,13 @@ public abstract class BaseActivity extends QMUIFragmentActivity {
      */
     @Override
     public boolean dispatchTouchEvent(MotionEvent event) {
-        if (event.getAction() == MotionEvent.ACTION_DOWN) {
-            View v = getCurrentFocus();
-            if (isShouldHideKeyboard(v, event)) {
-                KeyboardUtils.hideSoftInput(this);
+        if (isEnableHideSoftInput())
+            if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                View v = getCurrentFocus();
+                if (isShouldHideKeyboard(v, event)) {
+                    KeyboardUtils.hideSoftInput(this);
+                }
             }
-        }
         return super.dispatchTouchEvent(event);
     }
 
@@ -45,5 +48,13 @@ public abstract class BaseActivity extends QMUIFragmentActivity {
                     && event.getRawY() > top && event.getRawY() < bottom);
         }
         return false;
+    }
+
+    public boolean isEnableHideSoftInput() {
+        return isEnableHideSoftInput;
+    }
+
+    public void setEnableHideSoftInput(boolean enableHideSoftInput) {
+        isEnableHideSoftInput = enableHideSoftInput;
     }
 }
