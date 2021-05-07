@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="pushViewModel"
+            type="com.toocms.sample.ui.expand.push.PushViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="15dp">
+
+        <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+            onClickCommand="@{pushViewModel.enable}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="开启推送" />
+
+        <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+            onClickCommand="@{pushViewModel.disable}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="关闭推送" />
+
+        <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+            onClickCommand="@{pushViewModel.addAlias}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="添加别名" />
+
+        <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+            onClickCommand="@{pushViewModel.setAlias}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="设置别名" />
+
+        <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+            onClickCommand="@{pushViewModel.deleteAlias}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="删除别名" />
+    </LinearLayout>
+</layout>

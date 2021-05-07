@@ -1,10 +1,9 @@
 package com.toocms.sample.ui.expand.guide;
 
-import android.app.Activity;
-
 import com.toocms.sample.R;
 import com.toocms.sample.ui.MainActivity;
 import com.toocms.tab.expand.guide.BaseGuideActivity;
+import com.toocms.tab.push.TabPush;
 
 /**
  * 引导页
@@ -23,7 +22,8 @@ public class GuideAty extends BaseGuideActivity {
     }
 
     @Override
-    protected Class<? extends Activity> getSkipClass() {
-        return MainActivity.class;
+    public void onJumpClick() {
+//        TabPush.getInstance().startActivity(this, MainActivity.class);
+        finish();
     }
 }

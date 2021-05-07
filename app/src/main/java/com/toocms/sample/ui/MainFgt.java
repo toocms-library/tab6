@@ -1,14 +1,13 @@
 package com.toocms.sample.ui;
 
-import android.graphics.Color;
-
-import com.blankj.utilcode.util.LogUtils;
 import com.toocms.sample.R;
 import com.toocms.sample.ui.expand.ExpandFgt;
+import com.toocms.sample.ui.expand.push.PushFgt;
 import com.toocms.sample.ui.tool.ToolFgt;
 import com.toocms.sample.ui.widget.WidgetFgt;
 import com.toocms.tab.expand.tabsegment.BaseBottomTabSegmentFragment;
 import com.toocms.tab.expand.tabsegment.TabSegmentItem;
+import com.toocms.tab.push.TabPush;
 
 /**
  * 首页
@@ -17,6 +16,12 @@ import com.toocms.tab.expand.tabsegment.TabSegmentItem;
  * Date：2020/9/29 18:23
  */
 public class MainFgt extends BaseBottomTabSegmentFragment {
+
+    @Override
+    protected void onFragmentCreated() {
+        super.onFragmentCreated();
+        TabPush.getInstance().handlerNotifyClick(this, uMessage -> action());
+    }
 
     @Override
     protected TabSegmentItem[] getTabSegmentItems() {
@@ -30,5 +35,9 @@ public class MainFgt extends BaseBottomTabSegmentFragment {
     @Override
     protected boolean isSwipeable() {
         return false;
+    }
+
+    private void action() {
+        startFragment(PushFgt.class);
     }
 }

@@ -2,7 +2,7 @@ package com.toocms.sample.ui.expand.share;
 
 import com.toocms.sample.BR;
 import com.toocms.sample.R;
-import com.toocms.sample.databinding.FgtWidgetShareBinding;
+import com.toocms.sample.databinding.FgtExpandShareBinding;
 import com.toocms.sample.ui.base.BaseFgt;
 
 /**
@@ -10,7 +10,7 @@ import com.toocms.sample.ui.base.BaseFgt;
  * Author：Zero
  * Date：2020/12/10 15:53
  */
-public class ShareFgt extends BaseFgt<FgtWidgetShareBinding, ShareViewModel> {
+public class ShareFgt extends BaseFgt<FgtExpandShareBinding, ShareViewModel> {
 
     @Override
     protected void onFragmentCreated() {
@@ -19,7 +19,7 @@ public class ShareFgt extends BaseFgt<FgtWidgetShareBinding, ShareViewModel> {
 
     @Override
     protected int getLayoutResId() {
-        return R.layout.fgt_widget_share;
+        return R.layout.fgt_expand_share;
     }
 
     @Override

@@ -3,6 +3,7 @@ package com.toocms.sample.config;
 import android.app.Application;
 
 import com.toocms.tab.configs.IAppConfig;
+import com.toocms.tab.push.TabPush;
 import com.umeng.socialize.PlatformConfig;
 
 /**
@@ -42,7 +43,7 @@ public class AppConfig implements IAppConfig {
         PlatformConfig.setSinaWeibo("1008244763", "bd40713f78c08084bcdc3b49c358fb1b", "http://sns.whalecloud.com");
         PlatformConfig.setSinaFileProvider("com.toocms.sample.fileprovider");
         // 注册推送服务
-//        TabPush.getInstance(application).register(true);
-//        RxHttp.init(createClient(), true);
+        TabPush.getInstance().register();
+        TabPush.getInstance().registerXiaoMiPush("2882303761519902601", "5561990252601");
     }
 }

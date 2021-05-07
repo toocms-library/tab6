@@ -54,6 +54,7 @@ dependencies {
     implementation project(path: ':tab-expand')
     implementation project(path: ':tab-map')
     implementation project(path: ':tab-pay')
+    implementation project(path: ':tab-push')
     implementation project(path: ':tab-share')
     implementation 'com.umeng.umsdk:share-sina:7.1.4'
     implementation 'com.sina.weibo.sdk:core:10.10.0:openDefaultRelease@aar'
