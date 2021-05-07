@@ -14,6 +14,7 @@
     <attr name="app_picker_button_color" format="color" />
 
     <!-- 引导页立即体验按钮的边距 -->
+    <attr name="app_guide_btn_view_background" format="reference" />
     <attr name="app_guide_btn_margin_bottom" format="dimension" />
     <attr name="app_guide_btn_padding_horizontal" format="dimension" />
     <attr name="app_guide_btn_padding_vertical" format="dimension" />
@@ -83,6 +84,7 @@
         <item name="app_picker_button_color">?attr/app_primary_color</item>
 
         <!-- 引导页 -->
+        <item name="app_guide_btn_view_background">@drawable/shape_bg_button_corner_white</item>
         <item name="app_guide_btn_margin_bottom">40dp</item>
         <item name="app_guide_btn_padding_horizontal">15dp</item>
         <item name="app_guide_btn_padding_vertical">10dp</item>

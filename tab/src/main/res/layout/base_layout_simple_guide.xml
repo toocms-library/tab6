@@ -34,7 +34,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="?attr/app_guide_btn_margin_bottom"
-        android:background="@drawable/shape_bg_button_corner_white"
+        android:background="?attr/app_guide_btn_view_background"
         android:clickable="true"
         android:focusable="true"
         android:paddingStart="?attr/app_guide_btn_padding_horizontal"
