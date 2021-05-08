@@ -80,7 +80,6 @@ dependencies {
     api thirdDependencies["umeng-common"]
     api thirdDependencies["umeng-utdid"]
     api thirdDependencies["umeng-asms"]
-    api thirdDependencies["umeng-crash"]
 
     annotationProcessor compilerDependencies["glide-compiler"]
     annotationProcessor compilerDependencies["arch-compiler"]

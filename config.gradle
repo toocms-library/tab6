@@ -62,7 +62,6 @@ ext {
             "umeng-common"    : "com.umeng.umsdk:common:9.3.8",
             "umeng-utdid"     : "com.umeng.umsdk:utdid:1.5.2.1",
             "umeng-asms"      : "com.umeng.umsdk:asms:1.2.2",
-            "umeng-crash"     : "com.umeng.umsdk:crash:0.0.5",
             "umeng-share-core": "com.umeng.umsdk:share-core:7.1.4",
             "umeng-share-qq"  : "com.umeng.umsdk:share-qq:7.1.4",
             "umeng-share-wx"  : "com.umeng.umsdk:share-wx:7.1.4",
