@@ -12,8 +12,8 @@
 allprojects {
      repositories {
         maven { url "https://jitpack.io" }
-        maven { url 'https://dl.bintray.com/umsdk/release' }
-        maven { url "https://dl.bintray.com/thelasterstar/maven/" }
+        maven { url 'https://repo1.maven.org/maven2/' }
+        maven { url "https://dl.bintray.com/thelasterstar/maven/" }     // 目前只有新浪微博分享用到，不集成可以删除该项
     }
 }
 ```
