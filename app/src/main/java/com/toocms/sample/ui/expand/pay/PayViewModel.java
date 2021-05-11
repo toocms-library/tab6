@@ -20,15 +20,6 @@ public class PayViewModel extends BaseViewModel {
         super(application);
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-        TabPay.payStatusCallback(() -> {
-            // 调用检测支付状态接口
-            showSingleActionDialog("结果", "通过请求接口获取支付状态", "确定", (dialog, index) -> dialog.dismiss());
-        });
-    }
-
     // 支付宝支付
     public BindingCommand alipay = new BindingCommand(() -> pay("http://ttt.toocms.com/PayDemo/alipay"));
     // 微信支付
@@ -43,6 +34,8 @@ public class PayViewModel extends BaseViewModel {
         ApiTool.post(url)
                 .asTooCMSResponse(PayRequest.class)
                 .withViewModel(this)
-                .request(payRequest -> TabPay.pay(payRequest));
+                .request(payRequest -> TabPay.payV2(this, payRequest, payResponse -> {
+                    showSingleActionDialog("结果", payResponse.toString(), "确定", (dialog, index) -> dialog.dismiss());
+                }));
     }
 }
