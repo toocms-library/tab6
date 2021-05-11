@@ -24,5 +24,5 @@ android {
 dependencies {
     compileOnly project(path: ':tab')
     api files('libs/alipay.jar')
-    api thirdDependencies["wxpay"]
+    api thirdDependencies["wx"]
 }

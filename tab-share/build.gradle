@@ -32,6 +32,6 @@ dependencies {
     api thirdDependencies["umeng-share-core"]
     api thirdDependencies["umeng-share-qq"]
     api thirdDependencies["umeng-share-wx"]
-    api thirdDependencies["wxpay"]
+    api thirdDependencies["wx"]
     api thirdDependencies["qq"]
 }
