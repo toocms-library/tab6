@@ -3,7 +3,9 @@ package com.toocms.tab.pay;
 import com.alipay.sdk.app.PayTask;
 import com.blankj.utilcode.util.ActivityUtils;
 import com.blankj.utilcode.util.LogUtils;
+import com.toocms.tab.bus.Messenger;
 import com.toocms.tab.pay.modle.PayRequest;
+import com.toocms.tab.pay.modle.PayResponse;
 
 import java.util.Map;
 
@@ -14,8 +16,6 @@ import java.util.Map;
  * Version 1.0
  */
 class AliPay implements Runnable {
-
-    private final String TAG = "Alipay";
 
     private Thread thread;
     private PayRequest payRequest;
@@ -38,6 +38,14 @@ class AliPay implements Runnable {
         PayTask alipay = new PayTask(ActivityUtils.getTopActivity());
         // 调用支付接口，获取支付结果
         Map<String, String> result = alipay.payV2(payRequest.getSign(), true);
-        LogUtils.i(TAG, result.toString());
+        LogUtils.e(TabPay.ALIPAY, result.toString());
+        PayResponse response = new PayResponse();
+        response.payType = TabPay.ALIPAY;
+        try {
+            response.responseCode = Integer.parseInt(result.get("resultStatus"));
+        } catch (NumberFormatException exception) {
+            response.responseCode = 0;
+        }
+        Messenger.getDefault().send(response, TabPay.TOKEN_PAY_RESPONSE);
     }
 }

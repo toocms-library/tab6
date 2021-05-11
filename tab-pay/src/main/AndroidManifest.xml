@@ -8,6 +8,16 @@
         android:resizeable="true"
         android:smallScreens="true" />
 
+    <!-- Android11适配 -->
+    <queries>
+        <!-- 指定支付宝包名 -->
+        <package android:name="com.eg.android.AlipayGphone" />
+        <!-- AlipayHK -->
+        <package android:name="hk.alipay.wallet" />
+        <!-- 指定微信包名 -->
+        <package android:name="com.tencent.mm" />
+    </queries>
+
     <application>
 
         <uses-library
@@ -46,5 +56,10 @@
             android:configChanges="orientation|keyboardHidden|navigation|screenSize"
             android:exported="false"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity
+            android:name="${applicationId}.wxapi.WXPayEntryActivity"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:theme="@style/ActivityTranslucent" />
     </application>
 </manifest>

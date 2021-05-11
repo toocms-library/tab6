@@ -6,6 +6,7 @@ package com.toocms.tab.pay.listener;
  * Author Zero
  * Date 2016/12/6 16:46
  */
+@Deprecated
 public interface PayStatusCallback {
     void callback();
 }
