@@ -1,15 +1,21 @@
 package com.toocms.tab.push;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentActivity;
+
 import com.blankj.utilcode.util.ActivityUtils;
 import com.blankj.utilcode.util.LogUtils;
+import com.qmuiteam.qmui.arch.QMUIFragment;
 import com.toocms.tab.TooCMSApplication;
 import com.toocms.tab.base.BaseFragment;
 import com.toocms.tab.binding.command.BindingConsumer;
 import com.toocms.tab.bus.Messenger;
+import com.toocms.tab.push.activity.TooCMSPushContainerActivity;
 import com.umeng.message.IUmengCallback;
 import com.umeng.message.IUmengRegisterCallback;
 import com.umeng.message.MsgConstant;
@@ -57,8 +63,8 @@ public class TabPush {
     /**
      * 注册推送
      */
-    public void register() {
-        register(new TooCMSMessageHandler(), new TooCMSNotificationClickHandler(), s -> LogUtils.e("注册成功", s), s -> LogUtils.e("注册失败", s));
+    public void register(UmengNotificationClickHandler notificationClickHandler) {
+        register(new TooCMSMessageHandler(), notificationClickHandler, s -> LogUtils.e("注册成功", s), s -> LogUtils.e("注册失败", s));
     }
 
     /**
@@ -150,40 +156,17 @@ public class TabPush {
     }
 
     /**
-     * 启动Activity并传递参数
+     * 启动Fragment页面
      *
-     * @param activity
+     * @param context
      * @param clz
+     * @param bundle
      */
-    public void startActivity(Activity activity, Class<? extends Activity> clz) {
-        Intent intent = activity.getIntent();
-        Intent newIntent = new Intent(activity, clz);
-        if (intent != null && intent.hasExtra(QMUI_INTENT_FRAGMENT_ARG))
-            newIntent.putExtra(QMUI_INTENT_FRAGMENT_ARG, intent.getBundleExtra(QMUI_INTENT_FRAGMENT_ARG));
-        ActivityUtils.startActivity(newIntent);
-    }
-
-    /**
-     * 处理通知栏点击事件
-     *
-     * @param fragment
-     * @param onNotifyClick
-     */
-    public void handlerNotifyClick(BaseFragment fragment, BindingConsumer<UMessage> onNotifyClick) {
-        Bundle bundle = fragment.getArguments();
-        if (bundle != null && bundle.containsKey(AgooConstants.MESSAGE_BODY)) {
-            UMessage uMessage = null;
-            try {
-                uMessage = new UMessage(new JSONObject(bundle.getString(AgooConstants.MESSAGE_BODY)));
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-            LogUtils.e(uMessage.getRaw());
-            onNotifyClick.call(uMessage);
-        }
-        Messenger.getDefault().register(fragment, TOKEN_NOTIFY_CLICK, UMessage.class, uMessage -> {
-            LogUtils.e(uMessage.getRaw());
-            onNotifyClick.call(uMessage);
-        });
+    public void startFragment(@NonNull Context context, @NonNull Class<? extends QMUIFragment> clz, Bundle bundle) {
+        Intent intent = new Intent(context, TooCMSPushContainerActivity.class);
+        intent.putExtra("fragment", clz);
+        intent.putExtras(bundle);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        ActivityUtils.startActivity(intent);
     }
 }

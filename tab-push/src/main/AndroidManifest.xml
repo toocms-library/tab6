@@ -159,5 +159,7 @@
             android:name=".activity.TooCMSNotifyClickActivity"
             android:exported="true"
             android:launchMode="singleTask" />
+
+        <activity android:name=".activity.TooCMSPushContainerActivity" />
     </application>
 </manifest>
