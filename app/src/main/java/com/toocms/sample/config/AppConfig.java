@@ -1,9 +1,14 @@
 package com.toocms.sample.config;
 
 import android.app.Application;
+import android.content.Context;
+import android.os.Bundle;
 
+import com.toocms.sample.ui.expand.push.PushFgt;
 import com.toocms.tab.configs.IAppConfig;
 import com.toocms.tab.push.TabPush;
+import com.umeng.message.UmengNotificationClickHandler;
+import com.umeng.message.entity.UMessage;
 import com.umeng.socialize.PlatformConfig;
 
 /**
@@ -43,7 +48,17 @@ public class AppConfig implements IAppConfig {
         PlatformConfig.setSinaWeibo("1008244763", "bd40713f78c08084bcdc3b49c358fb1b", "http://sns.whalecloud.com");
         PlatformConfig.setSinaFileProvider("com.toocms.sample.fileprovider");
         // 注册推送服务
-        TabPush.getInstance().register();
+        TabPush.getInstance().register(new UmengNotificationClickHandler() {
+
+            @Override
+            public void dealWithCustomAction(Context context, UMessage uMessage) {
+                super.dealWithCustomAction(context, uMessage);
+                Bundle bundle = new Bundle();
+                bundle.putString("111", uMessage.extra.get("111"));
+                bundle.putString("222", uMessage.extra.get("222"));
+                TabPush.getInstance().startFragment(context, PushFgt.class, bundle);
+            }
+        });
         TabPush.getInstance().registerXiaoMiPush("2882303761519902601", "5561990252601");
     }
 }

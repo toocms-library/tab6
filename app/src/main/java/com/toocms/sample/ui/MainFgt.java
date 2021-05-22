@@ -18,12 +18,6 @@ import com.toocms.tab.push.TabPush;
 public class MainFgt extends BaseBottomTabSegmentFragment {
 
     @Override
-    protected void onFragmentCreated() {
-        super.onFragmentCreated();
-        TabPush.getInstance().handlerNotifyClick(this, uMessage -> action());
-    }
-
-    @Override
     protected TabSegmentItem[] getTabSegmentItems() {
         return new TabSegmentItem[]{
                 new TabSegmentItem(R.drawable.ic_tab_tool_normal, R.drawable.ic_tab_tool_selected, "工具", ToolFgt.class),
@@ -35,9 +29,5 @@ public class MainFgt extends BaseBottomTabSegmentFragment {
     @Override
     protected boolean isSwipeable() {
         return false;
-    }
-
-    private void action() {
-        startFragment(PushFgt.class);
     }
 }
