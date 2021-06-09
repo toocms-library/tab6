@@ -2,6 +2,8 @@ package com.toocms.tab.configs;
 
 import android.app.Application;
 
+import com.toocms.tab.network.PostFormApi;
+
 import rxhttp.wrapper.param.Param;
 
 /**
@@ -48,7 +50,7 @@ public interface IAppConfig {
     /**
      * 设置RxHttp请求时的公共参数
      * 可根据不同请求添加不同参数，每次发送请求前都会被回调
-     * 如果希望部分请求不回调这里，发请求前调用{@link com.toocms.tab.network.GetApi#setAssemblyEnabled(boolean)}、{@link com.toocms.tab.network.PostApi#setAssemblyEnabled(boolean)}为false即可
+     * 如果希望部分请求不回调这里，添加参数时调用setAssemblyEnabled(false)即可
      *
      * @return
      */

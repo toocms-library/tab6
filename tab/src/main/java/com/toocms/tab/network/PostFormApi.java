@@ -18,19 +18,19 @@ import rxhttp.wrapper.entity.Progress;
  * Author：Zero
  * Date：2020/9/30 15:20
  */
-public class PostApi {
+public class PostFormApi {
 
     private RxHttpFormParam param;
 
-    private PostApi(RxHttpFormParam param) {
+    private PostFormApi(RxHttpFormParam param) {
         this.param = param;
     }
 
-    public static PostApi post(@NonNull String url) {
-        return new PostApi(RxHttp.postForm(url));
+    public static PostFormApi post(@NonNull String url) {
+        return new PostFormApi(RxHttp.postForm(url));
     }
 
-    public PostApi params(HttpParams params) {
+    public PostFormApi params(HttpParams params) {
         if (ObjectUtils.isNotEmpty(params)) {
             param.addAll(params.urlParamsMap);
             for (Map.Entry<String, File> entry : params.fileParamsMap.entrySet()) {
@@ -40,24 +40,24 @@ public class PostApi {
         return this;
     }
 
-    public PostApi params(Map<String, ?> params) {
+    public PostFormApi params(Map<String, ?> params) {
         if (ObjectUtils.isNotEmpty(params)) {
             param.addAll(params);
         }
         return this;
     }
 
-    public PostApi add(String key, Object value) {
+    public PostFormApi add(String key, Object value) {
         param.add(key, value);
         return this;
     }
 
-    public PostApi addFile(String key, File value) {
+    public PostFormApi addFile(String key, File value) {
         param.addFile(key, value);
         return this;
     }
 
-    public PostApi addFile(String key, String filePath) {
+    public PostFormApi addFile(String key, String filePath) {
         param.addFile(key, filePath);
         return this;
     }
@@ -69,27 +69,27 @@ public class PostApi {
      * @param value
      * @return
      */
-    public PostApi addHeader(String key, String value) {
+    public PostFormApi addHeader(String key, String value) {
         param.addHeader(key, value);
         return this;
     }
 
-    public PostApi addHeader(String key, String value, boolean isAdd) {
+    public PostFormApi addHeader(String key, String value, boolean isAdd) {
         param.addHeader(key, value, isAdd);
         return this;
     }
 
-    public PostApi addAllHeader(Map<String, String> headers) {
+    public PostFormApi addAllHeader(Map<String, String> headers) {
         param.addAllHeader(headers);
         return this;
     }
 
-    public PostApi setHeader(String key, String value) {
+    public PostFormApi setHeader(String key, String value) {
         param.setHeader(key, value);
         return this;
     }
 
-    public PostApi setAllHeader(Map<String, String> headers) {
+    public PostFormApi setAllHeader(Map<String, String> headers) {
         param.setAllHeader(headers);
         return this;
     }
@@ -100,7 +100,7 @@ public class PostApi {
      * @param enabled true - 添加，false - 不添加
      * @return
      */
-    public PostApi setAssemblyEnabled(boolean enabled) {
+    public PostFormApi setAssemblyEnabled(boolean enabled) {
         param.setAssemblyEnabled(enabled);
         return this;
     }
@@ -111,7 +111,7 @@ public class PostApi {
      * @param progressConsumer 进度回调
      * @return
      */
-    public PostApi asUpload(Consumer<Progress> progressConsumer) {
+    public PostFormApi asUpload(Consumer<Progress> progressConsumer) {
         param.upload(AndroidSchedulers.mainThread(), progressConsumer);
         return this;
     }

@@ -18,8 +18,16 @@ public final class ApiTool {
         return GetApi.create(parseUrl(url));
     }
 
-    public static PostApi post(@NonNull String url) {
-        return PostApi.post(parseUrl(url));
+    public static PostFormApi post(@NonNull String url) {
+        return PostFormApi.post(parseUrl(url));
+    }
+
+    public static PostJsonApi postJson(@NonNull String url) {
+        return PostJsonApi.post(parseUrl(url));
+    }
+
+    public static PostJsonArrayApi postJsonArray(@NonNull String url) {
+        return PostJsonArrayApi.post(parseUrl(url));
     }
 
     static String parseUrl(String url) {
