@@ -48,6 +48,7 @@ public class PictureAdderView extends RecyclerView implements PictureAdderAdapte
     private int spacing;
     private int chooseMode;
     private int maxSelectNum;
+    private int maxVideoSelectNum;
     private int videoMaxSecond;
     private int recordVideoSecond;
 
@@ -63,6 +64,7 @@ public class PictureAdderView extends RecyclerView implements PictureAdderAdapte
         numColumns = typedArray.getInteger(R.styleable.PictureAdderView_numColumns, 4);
         chooseMode = typedArray.getInt(R.styleable.PictureAdderView_chooseMode, 1);
         maxSelectNum = typedArray.getInteger(R.styleable.PictureAdderView_maxSelectNum, 9);
+        maxVideoSelectNum = typedArray.getInteger(R.styleable.PictureAdderView_maxVideoSelectNum, 1);
         videoMaxSecond = typedArray.getInteger(R.styleable.PictureAdderView_videoMaxSecond, 120);
         recordVideoSecond = typedArray.getInteger(R.styleable.PictureAdderView_recordVideoSecond, 120);
     }
@@ -91,6 +93,8 @@ public class PictureAdderView extends RecyclerView implements PictureAdderAdapte
                 .setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT)  // 相册Activity方向
                 .isOriginalImageControl(false)  // 不显示原图控制按钮
                 .maxSelectNum(maxSelectNum) // 最大选择数量
+                .maxVideoSelectNum(maxVideoSelectNum)
+                .isWithVideoImage(false)
                 .compressSavePath(FileManager.getCachePath())   //  压缩图片保存地址
                 .renameCompressFile(System.currentTimeMillis() + ".0")    // 重命名压缩文件名
                 .selectionMode(PictureConfig.MULTIPLE)    // 多选

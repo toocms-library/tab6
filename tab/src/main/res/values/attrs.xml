@@ -163,13 +163,13 @@
         <attr name="spacing" format="dimension" />
         <attr name="numColumns" format="integer" />
         <attr name="maxSelectNum" format="integer" />
+        <attr name="maxVideoSelectNum" format="integer" />
         <attr name="videoMaxSecond" format="integer" />
         <attr name="recordVideoSecond" format="integer" />
         <attr name="chooseMode">
             <flag name="all" value="0" />
             <flag name="image" value="1" />
             <flag name="video" value="2" />
-            <flag name="audio" value="3" />
         </attr>
     </declare-styleable>
 
