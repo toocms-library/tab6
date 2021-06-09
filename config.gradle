@@ -1,12 +1,12 @@
 ext {
 
-    versionCode = 20210511
-    versionName = "6.0.0-beta"
+    versionCode = 20210609
+    versionName = "6.0.0-beta02"
 
     qmui = "2.0.0-alpha11"
     smart = "2.0.1"
-    okhttp = "4.8.1"
-    rxhttp = "2.5.3"
+    okhttp = "4.9.1"
+    rxhttp = "2.6.1"
     glide = "4.11.0"
 
     androidVersion = [
@@ -31,7 +31,7 @@ ext {
     ]
 
     networkDependencies = [
-            "rxhttp": "com.ljx.rxhttp:rxhttp:$rxhttp",
+            "rxhttp": "com.github.liujingxing.rxhttp:rxhttp:$rxhttp",
             "okhttp": "com.squareup.okhttp3:okhttp:$okhttp",
     ]
 
@@ -50,7 +50,7 @@ ext {
     imageDependencies = [
             "glide"            : "com.github.bumptech.glide:glide:$glide",
             "glide-integration": "com.github.bumptech.glide:okhttp3-integration:$glide",
-            "pictureselector"  : "com.github.LuckSiege.PictureSelector:picture_library:v2.6.0"
+            "pictureselector"  : "io.github.lucksiege:pictureselector:v2.7.3-rc02"
     ]
 
     utilsDependencies = [
@@ -94,6 +94,6 @@ ext {
     compilerDependencies = [
             "glide-compiler" : "com.github.bumptech.glide:compiler:$glide",
             "arch-compiler"  : "com.qmuiteam:arch-compiler:$qmui",
-            "rxhttp-compiler": "com.ljx.rxhttp:rxhttp-compiler:$rxhttp"
+            "rxhttp-compiler": "com.github.liujingxing.rxhttp:rxhttp-compiler:$rxhttp"
     ]
 }
