@@ -31,6 +31,7 @@ import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
 import okhttp3.internal.platform.Platform;
+import rxhttp.RxHttpPlugins;
 
 import static com.toocms.tab.widget.update.entity.UpdateError.ERROR.CHECK_NO_NEW_VERSION;
 
@@ -85,7 +86,9 @@ public class TooCMSApplication extends MultiDexApplication {
         instance = this;
         appConfig = ReflectUtils.reflect(getPackageName() + ".config.AppConfig").newInstance().get();  // 初始化DataSet
         // 初始化网络请求
-        RxHttp.init(getClient(), false);
+        RxHttpPlugins.init(getClient())
+                .setDebug(false)
+                .setOnParamAssembly(param -> appConfig.setOnParamAssembly(param));
         // 初始化崩溃异常捕捉器
         initCrash();
         // 验证使用权限
