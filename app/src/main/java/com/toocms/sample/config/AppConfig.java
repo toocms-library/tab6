@@ -11,6 +11,9 @@ import com.umeng.message.UmengNotificationClickHandler;
 import com.umeng.message.entity.UMessage;
 import com.umeng.socialize.PlatformConfig;
 
+import rxhttp.wrapper.param.Method;
+import rxhttp.wrapper.param.Param;
+
 /**
  * App配置
  * Author：Zero
@@ -60,5 +63,18 @@ public class AppConfig implements IAppConfig {
             }
         });
         TabPush.getInstance().registerXiaoMiPush("2882303761519902601", "5561990252601");
+    }
+
+    @Override
+    public Param<?> setOnParamAssembly(Param<?> param) {
+        Method method = param.getMethod();
+        if (method.isGet()) {
+            param.add("method", "get");
+        } else if (method.isPost()) { //Post请求
+            param.add("method", "post");
+        }
+        return param.add("versionName", "1.0.0")//添加公共参数
+                .add("time", System.currentTimeMillis())
+                .addHeader("deviceType", "android"); //添加公共请求头
     }
 }

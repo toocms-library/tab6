@@ -12,9 +12,9 @@ import com.toocms.tab.base.BaseModel;
 import com.toocms.tab.base.BaseViewModel;
 import com.toocms.tab.binding.command.BindingCommand;
 import com.toocms.tab.bus.event.SingleLiveEvent;
+import com.toocms.tab.configs.FileManager;
 import com.toocms.tab.network.ApiTool;
 import com.toocms.tab.network.HttpParams;
-import com.toocms.tab.configs.FileManager;
 
 import java.io.File;
 import java.util.List;
@@ -48,6 +48,7 @@ public class HttpViewModel extends BaseViewModel<BaseModel> {
      */
     public BindingCommand getObjectOnMain = new BindingCommand(() ->
             ApiTool.get("Index/index")
+                    .setAssemblyEnabled(false)
                     .asTooCMSResponse(Index.class)
                     .observeOn(AndroidSchedulers.mainThread())
                     .request(index -> uc.setText.setValue(index.toString())));
