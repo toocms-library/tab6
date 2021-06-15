@@ -45,6 +45,11 @@ public class PostJsonApi {
         return this;
     }
 
+    public PostJsonApi addJsonElement(String key, String jsonElement) {
+        param.addJsonElement(key, jsonElement);
+        return this;
+    }
+
     public PostJsonApi addAll(Map<String, ?> map) {
         param.addAll(map);
         return this;
