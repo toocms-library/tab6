@@ -33,11 +33,25 @@ public class TabShare {
         return OneKeyShare.getInstance();
     }
 
+    /**
+     * 注册微信分享
+     *
+     * @param application
+     * @param appId
+     * @param appSecret
+     */
     public static void registerWX(Application application, String appId, String appSecret) {
         PlatformConfig.setWeixin(appId, appSecret);
         PlatformConfig.setWXFileProvider(application.getPackageName() + ".fileprovider");
     }
 
+    /**
+     * 注册QQ分享
+     *
+     * @param application
+     * @param appId
+     * @param appSecret
+     */
     public static void registerQQ(Application application, String appId, String appSecret) {
         PlatformConfig.setQQZone(appId, appSecret);
         PlatformConfig.setQQFileProvider(application.getPackageName() + ".fileprovider");
