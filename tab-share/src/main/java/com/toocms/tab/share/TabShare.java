@@ -1,7 +1,10 @@
 package com.toocms.tab.share;
 
+import android.app.Application;
+
 import com.toocms.tab.share.login.OneKeyLogin;
 import com.toocms.tab.share.share.OneKeyShare;
+import com.umeng.socialize.PlatformConfig;
 
 /**
  * Author：Zero
@@ -28,6 +31,16 @@ public class TabShare {
      */
     public static OneKeyShare getOneKeyShare() {
         return OneKeyShare.getInstance();
+    }
+
+    public static void registerWX(Application application, String appId, String appSecret) {
+        PlatformConfig.setWeixin(appId, appSecret);
+        PlatformConfig.setWXFileProvider(application.getPackageName() + ".fileprovider");
+    }
+
+    public static void registerQQ(Application application, String appId, String appSecret) {
+        PlatformConfig.setQQZone(appId, appSecret);
+        PlatformConfig.setQQFileProvider(application.getPackageName() + ".fileprovider");
     }
 
     /**
