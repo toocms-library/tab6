@@ -165,7 +165,8 @@ public class TabPush {
     public void startFragment(@NonNull Context context, @NonNull Class<? extends QMUIFragment> clz, Bundle bundle) {
         Intent intent = new Intent(context, TooCMSPushContainerActivity.class);
         intent.putExtra("fragment", clz);
-        intent.putExtras(bundle);
+        if (bundle != null)
+            intent.putExtras(bundle);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         ActivityUtils.startActivity(intent);
     }
