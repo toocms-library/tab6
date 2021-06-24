@@ -68,13 +68,14 @@ public class AppConfig implements IAppConfig {
     @Override
     public Param<?> setOnParamAssembly(Param<?> param) {
         Method method = param.getMethod();
-        if (method.isGet()) {
-            param.add("method", "get");
-        } else if (method.isPost()) { //Post请求
-            param.add("method", "post");
-        }
-        return param.add("versionName", "1.0.0")//添加公共参数
-                .add("time", System.currentTimeMillis())
-                .addHeader("deviceType", "android"); //添加公共请求头
+//        if (method.isGet()) {
+//            param.add("method", "get");
+//        } else if (method.isPost()) { //Post请求
+//            param.add("method", "post");
+//        }
+//        return param.add("versionName", "1.0.0")//添加公共参数
+//                .add("time", System.currentTimeMillis())
+//                .addHeader("deviceType", "android"); //添加公共请求头
+        return param;
     }
 }
