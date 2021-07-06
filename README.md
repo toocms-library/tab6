@@ -63,6 +63,12 @@ dependencies {
    android:theme="@style/Sample">
 </application>
 ```
+5.在根目录的gradle.properties文件中增加两行代码
+```properties
+android.useAndroidX=true
+# 自动转换为第三方库使用Android X
+android.enableJetifier=true
+```
 ## 思想概述
 该版本秉承MVVM开发模式，代表类：[BaseModel](https://github.com/toocms-library/tab6/blob/master/tab/src/main/java/com/toocms/tab/base/BaseModel.java)（Model基类）、[BaseFragment](https://github.com/toocms-library/tab6/blob/master/tab/src/main/java/com/toocms/tab/base/BaseFragment.java)（View基类）、[BaseViewModel](https://github.com/toocms-library/tab6/blob/master/tab/src/main/java/com/toocms/tab/base/BaseViewModel.java)（ViewModel基类）
 ### 各类作用域：
