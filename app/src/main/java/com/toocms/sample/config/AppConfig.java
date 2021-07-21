@@ -4,6 +4,7 @@ import android.app.Application;
 import android.content.Context;
 import android.os.Bundle;
 
+import com.blankj.utilcode.util.LogUtils;
 import com.toocms.sample.ui.expand.push.PushFgt;
 import com.toocms.tab.configs.IAppConfig;
 import com.toocms.tab.push.TabPush;
@@ -77,5 +78,10 @@ public class AppConfig implements IAppConfig {
 //                .add("time", System.currentTimeMillis())
 //                .addHeader("deviceType", "android"); //添加公共请求头
         return param;
+    }
+
+    @Override
+    public boolean isInitializationSDK() {
+        return true;
     }
 }
