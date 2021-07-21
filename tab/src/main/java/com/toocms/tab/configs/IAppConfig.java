@@ -55,4 +55,11 @@ public interface IAppConfig {
      * @return
      */
     Param<?> setOnParamAssembly(Param<?> param);
+
+    /**
+     * 是否初始化三方SDK（包括initJarForWeApplication回调方法）
+     *
+     * @return
+     */
+    boolean isInitializationSDK();
 }
