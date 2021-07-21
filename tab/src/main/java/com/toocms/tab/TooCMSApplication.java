@@ -95,21 +95,12 @@ public class TooCMSApplication extends MultiDexApplication {
         VerificationService.getInstance().verification();
         //
         QMUISwipeBackActivityManager.init(this);
-        // 初始化Umeng
-        UMConfigure.init(this,
-                appConfig.getUmengAppkey(),
-                "Umeng",
-                UMConfigure.DEVICE_TYPE_PHONE,
-                appConfig.getUmengPushSecret());
-        UMConfigure.setLogEnabled(true);
-        // 设置自动页面采集模式
-        MobclickAgent.setPageCollectionMode(MobclickAgent.PageMode.AUTO);
         // 初始化App更新
         initUpdate();
         // 设置Toast在中间显示
         ToastUtils.make().setGravity(Gravity.CENTER, 0, 0);
-        // 初始化第三方Jar包
-        appConfig.initJarForWeApplication(this);
+        // 先判断是否初始化三方SDK
+        if (appConfig.isInitializationSDK()) initializationSDK();
     }
 
     private OkHttpClient getClient() {
@@ -160,6 +151,20 @@ public class TooCMSApplication extends MultiDexApplication {
 
     public static TooCMSApplication getInstance() {
         return instance;
+    }
+
+    public void initializationSDK() {
+        // 初始化Umeng
+        UMConfigure.init(this,
+                appConfig.getUmengAppkey(),
+                "Umeng",
+                UMConfigure.DEVICE_TYPE_PHONE,
+                appConfig.getUmengPushSecret());
+        UMConfigure.setLogEnabled(true);
+        // 设置自动页面采集模式
+        MobclickAgent.setPageCollectionMode(MobclickAgent.PageMode.AUTO);
+        // 初始化第三方Jar包
+        appConfig.initJarForWeApplication(this);
     }
 
     public IAppConfig getAppConfig() {
