@@ -31,7 +31,7 @@ android {
 }
 
 dependencies {
-    def tab6_version = "6.0.0-beta07"
+    def tab6_version = "6.0.0-beta08"
     implementation 'com.github.toocms-library.tab6:tab:${tab6_version}' // 核心必须依赖
     implementation 'com.github.toocms-library.tab6:tab-expand:${tab6_version}' // 扩展包
     implementation 'com.github.toocms-library.tab6:tab-pay:${tab6_version}'   // 支付包
