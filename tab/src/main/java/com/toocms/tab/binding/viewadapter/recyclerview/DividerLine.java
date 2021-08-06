@@ -21,8 +21,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DividerLine extends RecyclerView.ItemDecoration {
-    public static final String TAG = DividerLine.class.getSimpleName();
-
 
     //默认分隔线厚度为1dp
     private static final int DEFAULT_DIVIDER_SIZE = 1;
@@ -125,14 +123,7 @@ public class DividerLine extends RecyclerView.ItemDecoration {
         boolean isFirstColumn = isFirstColumn(parent, itemPosition, spanCount, childCount);
         boolean isLastColumn = isLastColumn(parent, itemPosition, spanCount, childCount);
 
-//        Log.e(TAG,"position:"+itemPosition
-//                +"\nisFirstRow:"+isFirstRow
-//                +"\nisLastRow:"+isLastRow
-//                +"\nisFirstColumn:"+isFirstColumn
-//                +"\nisLastColumn:"+isLastColumn);
-
         int eachWidth = dividerSize / 2;
-//        int dl = dividerSize - eachWidth;
         int left = RecyclerView.HORIZONTAL == orientation(parent) ? eachWidth * 2 : eachWidth;
         int top = RecyclerView.VERTICAL == orientation(parent) ? eachWidth * 2 : eachWidth;
         int right = RecyclerView.HORIZONTAL == orientation(parent) ? 0 : eachWidth;
@@ -174,12 +165,8 @@ public class DividerLine extends RecyclerView.ItemDecoration {
             default:
                 result.set(0, 0, 0, 0);
         }
-
-//        Log.e(TAG, "position:" + itemPosition + "," + result.toString());
-
         return result;
     }
-
 
     /**
      * 将列表item的位置装换为二维数组
@@ -193,7 +180,6 @@ public class DividerLine extends RecyclerView.ItemDecoration {
         RecyclerView.LayoutManager layoutManager = parent.getLayoutManager();
         if (!(layoutManager instanceof GridLayoutManager))
             throw new IllegalArgumentException("recyclerView layoutManager no instanceof GridLayoutManager");
-//        int lines = childCount % spanCount == 0 ? childCount / spanCount : childCount / spanCount + 1;
         List<List<Integer>> result = new ArrayList<>();
         GridLayoutManager.SpanSizeLookup spanSizeLookup = ((GridLayoutManager) layoutManager).getSpanSizeLookup();
         for (int i = 0; i < childCount; i++) {
@@ -227,8 +213,6 @@ public class DividerLine extends RecyclerView.ItemDecoration {
                 result.get(result.size() - 1).add(-1);
             }
         }
-
-//        Log.e(TAG, result.toString());
         return result;
     }
 
@@ -251,6 +235,8 @@ public class DividerLine extends RecyclerView.ItemDecoration {
                 List<Integer> locationItemRow = locationItemRow(gridLayoutManagerItemPosition, spanCount, pos);
                 return !locationItemRow.isEmpty() && pos == locationItemRow.get(0);
             }
+        } else if (layoutManager instanceof LinearLayoutManager) {
+            return LinearLayoutManager.VERTICAL == ((LinearLayoutManager) layoutManager).getOrientation() ? 0 == pos : true;
         } else if (layoutManager instanceof StaggeredGridLayoutManager) {
             int orientation = ((StaggeredGridLayoutManager) layoutManager).getOrientation();
             // StaggeredGridLayoutManager 且纵向滚动
@@ -292,6 +278,8 @@ public class DividerLine extends RecyclerView.ItemDecoration {
                 //判断是否是最后一行
                 return spanCount == locationItemRow.size() && pos == locationItemRow.get(locationItemRow.size() - 1);
             }
+        } else if (layoutManager instanceof LinearLayoutManager) {
+            return LinearLayoutManager.VERTICAL == ((LinearLayoutManager) layoutManager).getOrientation() ? 1 == childCount - pos : true;
         } else if (layoutManager instanceof StaggeredGridLayoutManager) {
             int orientation = ((StaggeredGridLayoutManager) layoutManager).getOrientation();
             // StaggeredGridLayoutManager 且纵向滚动
@@ -326,6 +314,8 @@ public class DividerLine extends RecyclerView.ItemDecoration {
                 List<Integer> locationItemRow = locationItemRow(gridLayoutManagerItemPosition, spanCount, pos);
                 return !locationItemRow.isEmpty() && pos == locationItemRow.get(0);
             }
+        } else if (layoutManager instanceof LinearLayoutManager) {
+            return LinearLayoutManager.VERTICAL == ((LinearLayoutManager) layoutManager).getOrientation() ? true : 0 == pos;
         } else if (layoutManager instanceof StaggeredGridLayoutManager) {
             int orientation = ((StaggeredGridLayoutManager) layoutManager).getOrientation();
             if (orientation == StaggeredGridLayoutManager.VERTICAL) {
@@ -367,6 +357,8 @@ public class DividerLine extends RecyclerView.ItemDecoration {
                 return spanCount == locationItemRow.size() && pos == locationItemRow.get(locationItemRow.size() - 1);
             }
 
+        } else if (layoutManager instanceof LinearLayoutManager) {
+            return LinearLayoutManager.VERTICAL == ((LinearLayoutManager) layoutManager).getOrientation() ? true : 1 == childCount - pos;
         } else if (layoutManager instanceof StaggeredGridLayoutManager) {
             int orientation = ((StaggeredGridLayoutManager) layoutManager).getOrientation();
             if (orientation == StaggeredGridLayoutManager.VERTICAL) {
@@ -440,7 +432,6 @@ public class DividerLine extends RecyclerView.ItemDecoration {
         final int childCount = parent.getChildCount();
         for (int i = 0; i < childCount; i++) {
             View child = parent.getChildAt(i);
-//            RecyclerView.LayoutParams params = (RecyclerView.LayoutParams) child.getLayoutParams();
             int itemPosition = parent.getChildLayoutPosition(child);
             Rect itemOffsets = itemOffsets(parent, itemPosition);
             int itemLeft = child.getLeft();
@@ -468,7 +459,6 @@ public class DividerLine extends RecyclerView.ItemDecoration {
         return result;
     }
 
-
     /**
      * 绘制水平分隔线
      *
@@ -487,16 +477,13 @@ public class DividerLine extends RecyclerView.ItemDecoration {
             int itemRight = child.getRight();
             int itemBottom = child.getBottom();
 
-//            Log.e(TAG, "position:" + itemPosition + "," + itemOffsets.toString());
             //防止Item交界处出现空白,线的左边位置为（itemLeft-itemOffsets.left）,线的右边位置为（itemRight+itemOffsets.right）
             //绘制Items顶部的线
             if (0 != itemOffsets.top) {
-//                Log.e(TAG, "position:" + itemPosition + ",顶部的线绘制了,高度为" + itemOffsets.top);
                 c.drawRect(itemLeft - itemOffsets.left, itemTop - itemOffsets.top, itemRight + itemOffsets.right, itemTop, paint);
             }
             //绘制Item底部的线
             if (0 != itemOffsets.bottom) {
-//                Log.e(TAG, "position:" + itemPosition + ",底部的线绘制了,高度为" + itemOffsets.bottom);
                 c.drawRect(itemLeft - itemOffsets.left, itemBottom, itemRight + itemOffsets.right, itemBottom + itemOffsets.bottom, paint);
             }
         }
