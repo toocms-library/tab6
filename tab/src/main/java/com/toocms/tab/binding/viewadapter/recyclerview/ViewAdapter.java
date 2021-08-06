@@ -78,6 +78,12 @@ public class ViewAdapter {
 
     @BindingAdapter("lineManagerFactory")
     public static void setLineManager(RecyclerView recyclerView, LineManagers.LineManagerFactory lineManagerFactory) {
+        int itemDecorationCount = recyclerView.getItemDecorationCount();
+        if (0 < itemDecorationCount) {
+            for (int i = 0; i < itemDecorationCount; i++) {
+                recyclerView.removeItemDecorationAt(i);
+            }
+        }
         recyclerView.addItemDecoration(lineManagerFactory.create(recyclerView));
     }
 
